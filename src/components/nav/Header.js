@@ -7,9 +7,12 @@ import {
   UserAddOutlined,
 } from "@ant-design/icons";
 import { Link } from 'react-router-dom'
+import { useRedux } from "../../hooks/useRedux";
+
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
+ const {username} =  useRedux()
   const [current, setCurrent] = useState("home");
 
   const handleClick = (e) => {
@@ -23,7 +26,7 @@ const Header = () => {
       <Link to='/'>Home</Link>
       </Item>
 
-      <SubMenu icon={<SettingOutlined />} title={process.env.REACT_APP_MESSAGESENDERID}>
+      <SubMenu icon={<SettingOutlined />} title={username}>
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
       </SubMenu>

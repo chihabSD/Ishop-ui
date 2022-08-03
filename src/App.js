@@ -5,10 +5,12 @@ import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Header from "./components/nav/Header";
 import RegisterComplete from "./pages/auth/CompleteRegistration";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -16,7 +18,7 @@ const App = () => {
         <Route exact path="/register/complete" component={RegisterComplete} />
         <Route exact path="/register" component={Register} />
       </Switch>
-    </>
+    </Provider>
   );
 };
 
