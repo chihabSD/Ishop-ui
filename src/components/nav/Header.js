@@ -23,15 +23,15 @@ const Header = () => {
       <Link to='/'>Home</Link>
       </Item>
 
-      <SubMenu icon={<SettingOutlined />} title="Username">
+      <SubMenu icon={<SettingOutlined />} title={process.env.REACT_APP_APPID}>
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
       </SubMenu>
-      <Item key="register" icon={<UserAddOutlined />} className="right">
+      <Item key="register" icon={<UserAddOutlined />} className="float-end">
       <Link to='/register'>Register</Link>
       </Item>
 
-      <Item key="login" icon={<UserOutlined />} className="float-right">
+      <Item key="login" icon={<UserOutlined />} className="float-end">
       <Link to='/login'>Login</Link>
       </Item>
 
