@@ -23,7 +23,7 @@ const Header = () => {
       <Link to='/'>Home</Link>
       </Item>
 
-      <SubMenu icon={<SettingOutlined />} title={process.env.REACT_APP_APPID}>
+      <SubMenu icon={<SettingOutlined />} title={process.env.REACT_APP_MESSAGESENDERID}>
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
       </SubMenu>

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { auth } from "../../firebase";
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-const Register = () => {
+const RegisterComplete = ({history}) => {
+    console.log(history);
   
   const [email, setEmail] = useState("")
   const handleInputs = (e) => {
@@ -40,4 +41,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterComplete;
