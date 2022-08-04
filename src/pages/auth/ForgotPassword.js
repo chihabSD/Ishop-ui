@@ -1,10 +1,11 @@
+// "react-router-dom": "^5.2.0",
 import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRedux } from "../../hooks/useRedux";
 const ForgotPassword = ({ history }) => {
-  const { loading } = useRedux();
+  const { loading,  authenticated } = useRedux();
   const [email, setEmail] = useState("");
 
   const config = {
@@ -45,6 +46,7 @@ const ForgotPassword = ({ history }) => {
     }
   };
 
+ 
   const ForgotPasswordForm = () => (
     <form onSubmit={handleSubmit}>
       <input

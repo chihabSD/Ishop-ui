@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
@@ -10,6 +10,8 @@ import store from "./redux/store";
 import { auth } from "./firebase";
 import { _login } from "./redux/actions/auth";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import PrivateRoutes from "./routes/PrivateRoutes";
+import PublicRoutes from "./routes/PublicRoutes";
 const App = () => {
    useEffect(() => {
 
@@ -19,7 +21,7 @@ const App = () => {
 
       // dispatch()
       const {email, emailVerified} = user
-      
+
     store.dispatch(_login({email, idTokenResult, emailVerified }))
       }
     })
@@ -28,13 +30,18 @@ const App = () => {
   return (
     <Provider store={store}>
       <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/forgot/password" component={ForgotPassword} />
-        <Route exact path="/register/complete" component={RegisterComplete} />
-        <Route exact path="/register" component={Register} />
-      </Switch>
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+          <Route exact path="/" element={<Home />} />
+        </Route>
+
+        <Route element={<PublicRoutes />}>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/forgot/password" component={ForgotPassword} />
+          <Route exact path="/register/complete" component={RegisterComplete} />
+          <Route exact path="/register" component={Register} />
+        </Route>
+      </Routes>
     </Provider>
   );
 };
