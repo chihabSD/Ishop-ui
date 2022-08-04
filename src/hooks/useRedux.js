@@ -3,12 +3,13 @@ const useRedux = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const {
-    testReducer: { username },
+   profileReducer: { user },
   } = state;
   return {
     dispatch,
 
-    username,
+   
+    user
   };
 };
 

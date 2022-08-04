@@ -1,10 +1,10 @@
-import { getUserInfo } from "../reducers/profile";
+import { clearUserInfo, getUserInfo } from "../reducers/profile";
 
 
+// Login
 export const _login = (details ) => {
   return async dispatch => {
     try {
-    console.log(details);
       dispatch(getUserInfo(details))
     } catch (e) {
   
@@ -12,4 +12,16 @@ export const _login = (details ) => {
   };
 };
 
+
+// Logout
+export const _logout = (  ) => {
+  return async dispatch => {
+    try {
+      dispatch(clearUserInfo())
+    
+    } catch (e) {
+  
+    }
+  };
+};
 
