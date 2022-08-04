@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { auth } from "../../firebase";
+import { auth, googleAuthProvider } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "antd";
-import { MailOutlined } from "@ant-design/icons";
-
-const Login = () => {
+import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
+import { useRedux } from "../../hooks/useRedux";
+import { _login } from "../../redux/actions/auth";
+import { clearLoading } from "../../redux/reducers/loader";
+const Login = ({ history }) => {
+  const { dispatch, loading } = useRedux();
   const data = {
     email: "",
     password: "",
@@ -15,9 +18,51 @@ const Login = () => {
   const handleInputs = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
+  const googleLogin = async () => {
+    try {
+      const data = await auth.signInWithPopup(googleAuthProvider);
+      const { user } = data;
+      const idTokenResult = await user.getIdTokenResult();
+      console.log(user);
+
+      // Requst to our own backend
+
+
+      dispatch(
+        _login({
+          email: user.email,
+          token: idTokenResult.token,
+          emailVerified: user.emailVerified,
+        })
+      );
+
+      history.push("/");
+
+    } catch (error) {
+      toast.error(error.message);
+      dispatch(clearLoading());
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    try {
+      const data = await auth.signInWithEmailAndPassword(email, password);
+      const { user } = data;
+      const idTokenResult = await user.getIdTokenResult();
+
+      dispatch(
+        _login({
+          email: user.email,
+          token: idTokenResult.token,
+          emailVerified: user.emailVerified,
+        })
+      );
+
+      history.push("/");
+    } catch (error) {
+      toast.error(error.message);
+      dispatch(clearLoading());
+    }
   };
   const loginForm = () => (
     <form onSubmit={handleSubmit}>
@@ -57,17 +102,29 @@ const Login = () => {
       >
         Login with Email/Password
       </Button>
-      {/* <button type="submit" className="btn  btn-raised">
-        Login
-      </button> */}
     </form>
   );
   return (
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h1> Login</h1>
+          {loading ? (
+            <h4 className="text-denger">Loading....</h4>
+          ) : (
+            <h4>Login</h4>
+          )}
           {loginForm()}
+          <Button
+            icon={<GoogleOutlined />}
+            block
+            shape="round"
+            type="danger"
+            className="mb-3"
+            size="large"
+            onClick={googleLogin}
+          >
+            Login with Google
+          </Button>
         </div>
       </div>
       <ToastContainer />

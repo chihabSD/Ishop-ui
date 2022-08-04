@@ -3,13 +3,15 @@ const useRedux = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const {
-   profileReducer: { user },
+    profileReducer: { user, authenticated },
+    loadingReducer: { loading },
   } = state;
   return {
     dispatch,
 
-   
-    user
+    user,
+    loading,
+    authenticated
   };
 };
 

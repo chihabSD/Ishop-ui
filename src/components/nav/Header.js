@@ -15,7 +15,7 @@ import { _logout } from "../../redux/actions/auth";
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
-  const { user, dispatch } = useRedux();
+  const { user, dispatch, authenticated } = useRedux();
   const [current, setCurrent] = useState("home");
 
   const handleClick = (e) => {
@@ -32,14 +32,18 @@ const Header = () => {
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>
+{authenticated &&
 
-      <SubMenu icon={<SettingOutlined />} title={"chiahbe"}>
+      <SubMenu icon={<SettingOutlined />} title={user.email && user.email.split('@')[0]} className='float-right'>
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
         <Item icon={<LogoutOutlined />} onClick={logout}>
           Logout{" "}
         </Item>
       </SubMenu>
+}
+{!authenticated && <>
+
       <Item key="register" icon={<UserAddOutlined />} className="float-end">
         <Link to="/register">Register</Link>
       </Item>
@@ -47,6 +51,10 @@ const Header = () => {
       <Item key="login" icon={<UserOutlined />} className="float-end">
         <Link to="/login">Login</Link>
       </Item>
+</>
+
+}
+
     </Menu>
   );
 };

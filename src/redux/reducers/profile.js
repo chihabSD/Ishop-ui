@@ -1,19 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  users: {},
+  user: {},
+  authenticated: false,
 };
 export const profileSlicer = createSlice({
   name: "profile",
   initialState,
   reducers: {
     getUserInfo: (state, action) => {
-      state.users = action.payload;
+      state.user = action.payload;
     },
     clearUserInfo: (state, action) => {
-      console.log("clear user Info and rest");
-      state.users = {} 
+      state.user = {};
+    },
+    authenticateUser: (state, action) => {
+      state.authenticated = true;
+    },
+    unauthenticateUser: (state, action) => {
+      state.authenticated = false;
     },
   },
 });
-export const { getUserInfo, clearUserInfo } = profileSlicer.actions;
+export const {
+  getUserInfo,
+  clearUserInfo,
+  authenticateUser,
+  unauthenticateUser,
+} = profileSlicer.actions;
 export default profileSlicer.reducer;
