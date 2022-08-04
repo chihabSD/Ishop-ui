@@ -7,6 +7,7 @@ import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { useRedux } from "../../hooks/useRedux";
 import { _login } from "../../redux/actions/auth";
 import { clearLoading } from "../../redux/reducers/loader";
+import { Link } from "react-router-dom";
 const Login = ({ history }) => {
   const { dispatch, loading } = useRedux();
   const data = {
@@ -125,6 +126,7 @@ const Login = ({ history }) => {
           >
             Login with Google
           </Button>
+          <Link  to="/forgot/password" className="float-right text-danger">Forgot your password ? </Link>
         </div>
       </div>
       <ToastContainer />

@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { auth } from "./firebase";
 import { _login } from "./redux/actions/auth";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 const App = () => {
    useEffect(() => {
 
@@ -30,6 +31,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/forgot/password" component={ForgotPassword} />
         <Route exact path="/register/complete" component={RegisterComplete} />
         <Route exact path="/register" component={Register} />
       </Switch>
