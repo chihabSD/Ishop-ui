@@ -28,7 +28,7 @@ const Header = ({history}) => {
     auth.signOut();
     dispatch(_logout());
 
-    history.push('/login')
+    // history.push('/login')
   };
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
@@ -37,13 +37,14 @@ const Header = ({history}) => {
       </Item>
       {authenticated && (
         <SubMenu
+        key="1"
           icon={<SettingOutlined />}
           title={user.email && user.email.split("@")[0]}
           className="float-right"
         >
           <Item key="setting:1">Option 1</Item>
           <Item key="setting:2">Option 2</Item>
-          <Item icon={<LogoutOutlined />} onClick={logout}>
+          <Item key='setting:3' icon={<LogoutOutlined />} onClick={logout}>
             Logout{" "}
           </Item>
         </SubMenu>

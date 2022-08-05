@@ -8,7 +8,7 @@ import RegisterComplete from "./pages/auth/CompleteRegistration";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { auth } from "./firebase";
-import { _login } from "./redux/actions/auth";
+import { _firebaseLogin} from "./redux/actions/auth";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
@@ -22,7 +22,13 @@ const App = () => {
       // dispatch()
       const {email, emailVerified} = user
 
-    store.dispatch(_login({email, idTokenResult, emailVerified }))
+    store.dispatch(_firebaseLogin({email,  token :idTokenResult.token, emailVerified }))
+    // store.dispatch(_firebaseLogin({  name:res.data.name, 
+    //   email: res.data.email,
+    //   token: idTokenResult.token,
+    //   emailVerified: user.emailVerified,
+    //   role:res.data.role, 
+    //   _id:res.data._id}))
       }
     })
     return () => unsubscribe()
@@ -37,9 +43,9 @@ const App = () => {
 
         <Route element={<PublicRoutes />}>
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/forgot/password" component={ForgotPassword} />
-          <Route exact path="/register/complete" component={RegisterComplete} />
-          <Route exact path="/register" component={Register} />
+          <Route exact path="/forgot/password" element={<ForgotPassword />} />
+          <Route exact path="/register/complete" element={<RegisterComplete />} />
+          <Route exact path="/register" element={<Register />} />
         </Route>
       </Routes>
     </Provider>

@@ -5,9 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { Button } from "antd";
 import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { useRedux } from "../../hooks/useRedux";
-import { _login } from "../../redux/actions/auth";
+import { _firebaseLogin, _nativeLogin, _updateOrCreateUser } from "../../redux/actions/auth";
 import { clearLoading } from "../../redux/reducers/loader";
 import { Link } from "react-router-dom";
+import { async } from "@firebase/util";
+import axios from "axios";
+import setAutheader from "../../api/setAutheader";
 const Login = ({ history }) => {
   const { dispatch, loading } = useRedux();
   const data = {
@@ -19,25 +22,21 @@ const Login = ({ history }) => {
   const handleInputs = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
+
   const googleLogin = async () => {
     try {
       const data = await auth.signInWithPopup(googleAuthProvider);
       const { user } = data;
       const idTokenResult = await user.getIdTokenResult();
-      console.log(user);
-
+      // console.log(user);
+      // dispatch(_nativeLogin({ user: "chihafs" }));
       // Requst to our own backend
 
 
-      dispatch(
-        _login({
-          email: user.email,
-          token: idTokenResult.token,
-          emailVerified: user.emailVerified,
-        })
-      );
 
-      history.push("/");
+      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: user.emailVerified}))
+     
+
 
     } catch (error) {
       toast.error(error.message);
@@ -51,15 +50,10 @@ const Login = ({ history }) => {
       const { user } = data;
       const idTokenResult = await user.getIdTokenResult();
 
-      dispatch(
-        _login({
-          email: user.email,
-          token: idTokenResult.token,
-          emailVerified: user.emailVerified,
-        })
-      );
+      setAutheader(idTokenResult.token);
+      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: user.emailVerified}))      
 
-      history.push("/");
+      // history.push("/");
     } catch (error) {
       toast.error(error.message);
       dispatch(clearLoading());
@@ -126,7 +120,9 @@ const Login = ({ history }) => {
           >
             Login with Google
           </Button>
-          <Link  to="/forgot/password" className="float-right text-danger">Forgot your password ? </Link>
+          <Link to="/forgot/password" className="float-right text-danger">
+            Forgot your password ?{" "}
+          </Link>
         </div>
       </div>
       <ToastContainer />

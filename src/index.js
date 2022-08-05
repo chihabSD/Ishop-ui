@@ -5,10 +5,14 @@ import App from "./App";
 import { BrowserRouter as Router} from "react-router-dom";
 import "antd/dist/antd.css";
 
-ReactDOM.render(
+
+const container =   document.getElementById("root")
+const root = ReactDOM.createRoot(container);
+root.render(
+
   <Router>
     <App />
-  </Router>,
-  document.getElementById("root")
+  </Router>
+  // document.getElementById("root")
 );
 

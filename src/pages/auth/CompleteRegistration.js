@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { useRedux } from "../../hooks/useRedux";
+import { _firebaseLogin, _updateOrCreateUser } from "../../redux/actions/auth";
 const RegisterComplete = ({ history }) => {
+
+  const {dispatch} = useRedux()
   const data = {
     email: "",
     password: "",
@@ -12,6 +17,8 @@ const RegisterComplete = ({ history }) => {
   const handleInputs = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -46,10 +53,8 @@ const RegisterComplete = ({ history }) => {
         const idTokenResult = await user.getIdTokenResult();
 
         // Redux store
-
-        console.log("user", user, "idtokenResult", idTokenResult);
-        history.push("/");
-        // redirect
+        dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: user.emailVerified}))
+       
       }
     } catch (error) {
       console.log(error);
