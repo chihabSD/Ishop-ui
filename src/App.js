@@ -8,31 +8,33 @@ import RegisterComplete from "./pages/auth/CompleteRegistration";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { auth } from "./firebase";
-import { _firebaseLogin} from "./redux/actions/auth";
+import { _firebaseLogin } from "./redux/actions/auth";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
+import { _getCurrentProfile } from "./redux/actions/user";
+import setAutheader from "./api/setAutheader";
 const App = () => {
-   useEffect(() => {
-
+  useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if(user){
-        const idTokenResult = await user.getIdTokenResult()
+      if (user) {
+        const idTokenResult = await user.getIdTokenResult();
 
-      // dispatch()
-      const {email, emailVerified} = user
-
-    store.dispatch(_firebaseLogin({email,  token :idTokenResult.token, emailVerified }))
-    // store.dispatch(_firebaseLogin({  name:res.data.name, 
-    //   email: res.data.email,
-    //   token: idTokenResult.token,
-    //   emailVerified: user.emailVerified,
-    //   role:res.data.role, 
-    //   _id:res.data._id}))
+        // dispatch()
+        const { email, emailVerified } = user;
+        setAutheader(idTokenResult.token);
+        store.dispatch(_getCurrentProfile());
+        // store.dispatch(_firebaseLogin({email,  token :idTokenResult.token, emailVerified }))
+        // store.dispatch(_firebaseLogin({  name:res.data.name,
+        //   email: res.data.email,
+        //   token: idTokenResult.token,
+        //   emailVerified: user.emailVerified,
+        //   role:res.data.role,
+        //   _id:res.data._id}))
       }
-    })
-    return () => unsubscribe()
-  }, [])
+    });
+    return () => unsubscribe();
+  }, []);
   return (
     <Provider store={store}>
       <Header />
@@ -44,7 +46,11 @@ const App = () => {
         <Route element={<PublicRoutes />}>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/forgot/password" element={<ForgotPassword />} />
-          <Route exact path="/register/complete" element={<RegisterComplete />} />
+          <Route
+            exact
+            path="/register/complete"
+            element={<RegisterComplete />}
+          />
           <Route exact path="/register" element={<Register />} />
         </Route>
       </Routes>

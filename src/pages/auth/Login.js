@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { async } from "@firebase/util";
 import axios from "axios";
 import setAutheader from "../../api/setAutheader";
+import { sendEmailLink } from "./sendeEmailLink";
 const Login = ({ history }) => {
   const { dispatch, loading } = useRedux();
   const data = {
@@ -45,6 +46,8 @@ const Login = ({ history }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const data = sendEmailLink({email, password})
+   
     try {
       const data = await auth.signInWithEmailAndPassword(email, password);
       const { user } = data;
