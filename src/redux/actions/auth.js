@@ -23,10 +23,11 @@ export const _firebaseLogin = (details) => {
 };
 
 
-export const _updateOrCreateUser = (details ) => {
+export const _updateOrCreateUser = (details, navigate ) => {
   return async (dispatch) => {
     try {
       const { data } = await authApiHandler(names.CREATEORUPDATEUSER, details.token);
+    
          dispatch(
           getUserInfo({
             name:data.name, 

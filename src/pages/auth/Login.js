@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, googleAuthProvider } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,13 +7,14 @@ import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { useRedux } from "../../hooks/useRedux";
 import { _firebaseLogin, _nativeLogin, _updateOrCreateUser } from "../../redux/actions/auth";
 import { clearLoading } from "../../redux/reducers/loader";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { async } from "@firebase/util";
 import axios from "axios";
 import setAutheader from "../../api/setAutheader";
 import { sendEmailLink } from "./sendeEmailLink";
 const Login = ({ history }) => {
-  const { dispatch, loading } = useRedux();
+  const navigate = useNavigate
+  const { dispatch, loading, user } = useRedux();
   const data = {
     email: "",
     password: "",
@@ -24,6 +25,15 @@ const Login = ({ history }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
+  const roleBasedRedirect = (role) => {
+    if(role === 'admin'){
+
+     navigate('/admin') 
+    }else {
+
+     navigate('/user/history') 
+    }
+  }
   const googleLogin = async () => {
     try {
       const data = await auth.signInWithPopup(googleAuthProvider);
@@ -50,18 +60,21 @@ const Login = ({ history }) => {
    
     try {
       const data = await auth.signInWithEmailAndPassword(email, password);
-      const { user } = data;
-      const idTokenResult = await user.getIdTokenResult();
+      // const { user } = data;
+      const idTokenResult = await data.user.getIdTokenResult();
 
       setAutheader(idTokenResult.token);
-      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: user.emailVerified}))      
+      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: data.user.emailVerified}), navigate)      
 
       // history.push("/");
+      // roleBasedRedirect(user.role)
     } catch (error) {
       toast.error(error.message);
       dispatch(clearLoading());
     }
   };
+
+
   const loginForm = () => (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
