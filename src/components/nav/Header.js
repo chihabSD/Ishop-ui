@@ -1,29 +1,55 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
-import './style.scss'
+import "./style.scss";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
 import {
-  
   AppstoreOutlined,
   SettingOutlined,
   UserOutlined,
   UserAddOutlined,
   LogoutOutlined,
-  GlobalOutlined
+  GlobalOutlined,
+  SearchOutlined,
+  BulbOutlined, 
+MenuOutlined,
+BellOutlined
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
 // import firebase  from "firebase";
 import { auth } from "../../firebase";
 import { _logout } from "../../redux/actions/auth";
+import {
+  Items,
+  SearchContainer,
+  Wrapper,
+  ItemsChild,
+  Logo,
+  HeaderContainer,
+  HeaderWrapper,
+  HeaderLeft,
+  HeaderRight,
+  HeaderRightItem,
+  HeaderLeftItem,
+  Icon,
+  MainContainer,
+  Icons,
+  Avatar,
+} from "./Style";
+import AuthModal from "../../Modals/AuthModal";
 const { SubMenu, Item } = Menu;
-const Header = ({history}) => {
-  const location   = useLocation()
+
+const Header = ({ history }) => {
+  const location = useLocation();
   // console.log(location);
   const { user, dispatch, authenticated } = useRedux();
   const [current, setCurrent] = useState("home");
+  const [modal, setModal] = useState(false);
 
+  const toggleModal= (e) => {
+  setModal(prev => !prev)
+  };
   const handleClick = (e) => {
     // console.log(e.key);
     setCurrent(e.key);
@@ -32,46 +58,76 @@ const Header = ({history}) => {
   const logout = () => {
     auth.signOut();
     dispatch(_logout());
-
-  
   };
+
+  const fontSize = '20px'
   return (
-    <div className="headerContainer">
-    <div className="wrapper">
-      <div className="search">
-        <input type="text" placeholder="Search..." />
-        {/* <Search /> */}
-      </div>
-      <div className="items">
-        <div className="item">
-          <GlobalOutlined className="icon"/>
-        English
-        </div>
-        <div className="item">
-          
-          {/* <DarkModeOutlined className="icon" /> */}
-      
-        </div>
-        <div className="item">
-          {/* <FullscreenExitOutlined className="icon"/> */}
-        </div>
-        <div className="item">
-          {/* <NotificationsOutlined className="icon"/> */}
-          <div className="counter">1</div>
-        </div>
-        <div className="item">
-          {/* <ChatBubbleOutlined className="icon"/> */}
-          <div className="counter">2</div>
-        </div>
-        <div className="item">
-          {/* <ListOutlined className="icon"/> */}
-        </div>
-        <div className="item">
-        <img src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg" alt="" className="avatar"/>
-        </div>
-      </div>
-    </div>
-  </div>
+    <HeaderContainer>
+      <AuthModal />
+      <HeaderWrapper>
+        <HeaderLeft>
+          <Logo>
+            <h1>Iship</h1>
+          </Logo>
+          <SearchContainer>
+            <input type="text" placeholder="Search for everthing" />
+            <SearchOutlined style={{ fontSize }} />
+          </SearchContainer>
+        </HeaderLeft>
+        <HeaderRight>
+          <HeaderRightItem>
+            <span>Sign in</span>
+          </HeaderRightItem>
+          {/* <HeaderRightItem>
+            <GlobalOutlined />
+            <span>English</span>
+          </HeaderRightItem> */}
+          <HeaderRightItem>
+            <BulbOutlined style={{ fontSize }} />
+          </HeaderRightItem>
+          <HeaderRightItem>
+            <BellOutlined style={{ fontSize }} />
+          </HeaderRightItem>
+          <HeaderRightItem>
+            <SettingOutlined />
+          </HeaderRightItem>
+
+          <HeaderRightItem>
+            <Avatar
+              src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
+              alt=""
+            />
+          </HeaderRightItem>
+        </HeaderRight>
+      </HeaderWrapper>
+    </HeaderContainer>
+    // <MainContainer>
+    //   <HeaderContainer>
+    //     <Wrapper>
+    //       <HeaderLeft>
+    //         <Logo>
+    //           <h1>Ishop</h1>
+    //         </Logo>
+    //         <Search>
+    //           <input type="text" placeholder="Seach for anything" />
+    //           <Icon>
+    //             <Icons />
+    //           </Icon>
+    //         </Search>
+    //       </HeaderLeft>
+
+    //       <HeaderRight>
+    //         <HeaderLeftItem>Sign in</HeaderLeftItem>
+    //         <HeaderLeftItem>
+    //             <Icons />
+    //         </HeaderLeftItem>
+    //         <HeaderLeftItem>
+    //             <Icons />
+    //         </HeaderLeftItem>
+    //       </HeaderRight>
+    //     </Wrapper>
+    //   </HeaderContainer>
+    // </MainContainer>
     // <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
     //   <Item key="home" icon={<AppstoreOutlined />}>
     //     <Link to="/">Home</Link>
