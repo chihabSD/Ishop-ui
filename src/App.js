@@ -16,8 +16,10 @@ import { _getCurrentProfile } from "./redux/actions/user";
 import setAutheader from "./api/setAutheader";
 import ProtectedUserRoutes from "./routes/protectedUserRoutes";
 import History from "./pages/History";
-import './index.scss'
+import "./index.scss";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import Footer from "./components/footer";
+import { ParentContainer } from "./styles/Containers";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -39,33 +41,20 @@ const App = () => {
     });
     return () => unsubscribe();
   }, []);
-  
+
   return (
     <Provider store={store}>
-
-
- 
       <Header />
- {/* <div className="home">
 
-      <div className="homeContainer">
-    
-      <Header />
-    </div>
-    
- </div> */}
-      {/* <Header /> */}
+<ParentContainer>
+
       <Routes>
         <Route element={<PrivateRoutes />}>
-          
-          
-          <Route exact path="/" element={<Home />} />
-
-          <Route exact path="/admindashboard" element={<AdminDashboard
-             />} />
+          <Route exact path="/admindashboard" element={<AdminDashboard />} />
         </Route>
 
         <Route element={<PublicRoutes />}>
+          <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/forgot/password" element={<ForgotPassword />} />
           <Route
@@ -75,10 +64,9 @@ const App = () => {
           />
           <Route exact path="/register" element={<Register />} />
         </Route>
-
-
-      
       </Routes>
+</ParentContainer>
+      <Footer />
     </Provider>
   );
 };
