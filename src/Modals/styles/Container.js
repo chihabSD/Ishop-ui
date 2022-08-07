@@ -6,8 +6,12 @@ export const ModalContainer = styled.div`
   bottom: 0;
   left: 0;
   z-index: 1000;
-  background-color: black;
+  /* background-color: black; */
   display: flex;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  opacity: 0.3;
+  background-color: rgba(0,0,0,0.5);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

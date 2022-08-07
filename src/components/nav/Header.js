@@ -36,6 +36,7 @@ import {
   MainContainer,
   Icons,
   Avatar,
+  Counter,
 } from "./Style";
 import AuthModal from "../../Modals/AuthModal";
 const { SubMenu, Item } = Menu;
@@ -63,7 +64,10 @@ const Header = ({ history }) => {
   const fontSize = '20px'
   return (
     <HeaderContainer>
-      <AuthModal />
+      {modal &&
+      
+      <AuthModal toggleModal={toggleModal} />
+      }
       <HeaderWrapper>
         <HeaderLeft>
           <Logo>
@@ -75,7 +79,7 @@ const Header = ({ history }) => {
           </SearchContainer>
         </HeaderLeft>
         <HeaderRight>
-          <HeaderRightItem>
+          <HeaderRightItem onClick={()=>toggleModal()}>
             <span>Sign in</span>
           </HeaderRightItem>
           {/* <HeaderRightItem>
@@ -84,6 +88,7 @@ const Header = ({ history }) => {
           </HeaderRightItem> */}
           <HeaderRightItem>
             <BulbOutlined style={{ fontSize }} />
+            <Counter>2</Counter>
           </HeaderRightItem>
           <HeaderRightItem>
             <BellOutlined style={{ fontSize }} />
