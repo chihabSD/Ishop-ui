@@ -1,9 +1,9 @@
 import React from "react";
 import { PrimaryButtonContainer } from "./styles/Container";
 
-const Primary = ({icon, title, color }) => {
+const Primary = ({icon, title, onClick,  color,style, disabled }) => {
   return (
-    <PrimaryButtonContainer color={color}>
+    <PrimaryButtonContainer onClick={onClick} disabled={disabled} color={color} style={{...style}} >
         {icon}
       <span>{title} </span>
     </PrimaryButtonContainer>

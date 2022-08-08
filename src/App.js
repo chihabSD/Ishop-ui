@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import Home from "./pages/Home";
-import Header from "./components/nav/Header";
+// import Home from "./pages/Home/index";
+import Header from "./components/header/Header";
 import RegisterComplete from "./pages/auth/CompleteRegistration";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -20,6 +20,7 @@ import "./index.scss";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Footer from "./components/footer";
 import { ParentContainer } from "./styles/Containers";
+import Home from "./pages/home";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {

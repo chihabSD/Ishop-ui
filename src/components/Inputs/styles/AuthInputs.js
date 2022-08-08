@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const AuthInputsTitle = styled.div`
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 700;
 `;
 export const AuthInputsContainer = styled.div`

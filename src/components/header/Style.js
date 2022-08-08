@@ -48,7 +48,7 @@ export const Logo = styled.div`
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  border: 0.5px solid lightgray;
+  border: 2px solid #222;
   justify-content: space-between;
   border-radius: 20px;
   /* padding: 10px; */
@@ -67,7 +67,7 @@ export const SearchContainer = styled.div`
     height: 100%;
     &::placeholder {
       /* font-size: 20px; */
-      font-size: 12px;
+      font-size: 1rem;
     }
   }
 `;
@@ -82,7 +82,7 @@ export const HeaderRight = styled.div`
 
 export const HeaderRightItem = styled.div`
   /* background-color: blue; */
-  padding: 10px;
+  /* padding: 10px; */
   /* width: 70px; */
   /* height: 50px; */
   margin-right: 20px;
@@ -119,97 +119,3 @@ export const Counter = styled.div`
   top: -5px;
   right: -5px;
 `;
-// import {
-//     AppstoreOutlined,
-//     SettingOutlined,
-//     UserOutlined,
-//     UserAddOutlined,
-//     LogoutOutlined,
-//     GlobalOutlined,
-//     SearchOutlined,
-//   } from "@ant-design/icons";
-// export const MainContainer = styled.div`
-//   border-bottom: 0.5px solid rgb(231, 228, 228);
-//   padding-bottom: 10px;
-//   padding-top: 10px;
-// `;
-// export const HeaderContainer = styled.div`
-//   height: 70px;
-//   /* border-bottom: 0.5px solid rgb(231, 228, 228); */
-//   display: flex;
-//   align-items: center;
-//   font-size: 14px;
-//   color: #555;
-//   margin: 0 2%;
-// `;
-// export const Wrapper = styled.div`
-//   width: 100%;
-//   padding: 20px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// `;
-// export const HeaderLeft = styled.div`
-//   display: flex;
-//   flex: 1;
-//   margin-right: 25px;
-
-//   /* height: auto; */
-//   align-items: center;
-// `;
-// export const Logo = styled.div`
-//   /* flex: 2; */
-//   margin-right: 20px;
-//   h1 {
-//     font-size: 30px;
-//     font-weight: 900;
-//     color: #6439ff;
-//   }
-// `;
-
-// export const Search = styled.div`
-//   display: flex;
-//   height: 50px;
-//   align-items: center;
-//   border: 2px solid #222222;
-//   flex: 1;
-//   justify-content: space-between;
-
-//   border-radius: 100px;
-//   padding: 10px;
-//   background-color: white;
-//   /* padding: 3px; */
-
-//   input {
-//     border: none;
-//     outline: none;
-//     background: transparent;
-
-//     &::placeholder {
-//       font-size: 20px;
-//       color: #e4e4e4;
-//     }
-//   }
-// `;
-// export const Icons = styled(SearchOutlined)`
-// font-size: 30px;
-// `
-// export const Icon = styled.div`
-//   margin-right: 10px;
-
-// `;
-// export const HeaderRight = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-// export const HeaderLeftItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-right: 20px;
-//   position: relative;
-
-//   cursor: pointer;
-//   .icon {
-//     font-size: 20px;
-//   }
-// `;

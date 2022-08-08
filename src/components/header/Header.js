@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu } from "antd";
 import "./style.scss";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
@@ -61,6 +61,11 @@ const Header = ({ history }) => {
     dispatch(_logout());
   };
 
+  useEffect(() => {
+
+    if(modal) document.body.style.overflow ='hidden';
+    else document.body.style.overflow ='visible'
+  }, [modal])
   const fontSize = '20px'
   return (
     <HeaderContainer>
