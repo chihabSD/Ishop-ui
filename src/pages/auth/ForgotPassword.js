@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React  from "react";
+import { auth } from "../../firebase";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -26,12 +29,44 @@ const ForgotPassword = () => {
     register,
     formState: { errors , isValid, isDirty, isSubmitting},
     handleSubmit,
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm({    resolver: yupResolver(validationSchema) });
   const { loading, authenticated } = useRedux();
-  const [email, setEmail] = useState("");
+ 
+  const config = {
+    url: process.env.REACT_APP_FORGOT_PASSWORD_REDIRECT_URL,
+    handleCodeInApp: true,
+  };
+  const onSubmit = async ({email}) => {
+    
+    try {
+      // sign with the email link that is sent during step 1 of registration
+      await auth.sendPasswordResetEmail(email, config);
+      // setEmail("");
+      toast.success("Check your email for password reset link");
+      //   if (data.user.emailVerified) {
+      //     // remove user from LS
 
-  const onSubmit = (data) => {
-    console.log(data);
+      //     window.localStorage.removeItem("emailForRegistration");
+
+      //     // get user id token from current user
+      //     let user = auth.currentUser;
+
+      //     // update password
+      //     await user.updatePassword(password);
+
+      //     // user token
+      //     const idTokenResult = await user.getIdTokenResult();
+
+      //     // Redux store
+
+      //     console.log("user", user, "idtokenResult", idTokenResult);
+      //     history.push("/");
+      //     // redirect
+      //   }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
   return (
     <ForgotPasswordFormContainer>
@@ -51,7 +86,7 @@ const ForgotPassword = () => {
               label="Submit"
               onClick={handleSubmit(onSubmit)}
               color="#222"
-              error={!isDirty || !isValid}
+              error={!isDirty && !isValid}
               style={{
                 width: "200px",
                 display: "flex",
@@ -65,6 +100,7 @@ const ForgotPassword = () => {
           </ForgotPasswordFormForm>
         </ForgotPasswordFormContainerInner>
       </ForgotPasswordFormFormForm>
+      <ToastContainer />
     </ForgotPasswordFormContainer>
   );
 };
@@ -140,63 +176,3 @@ export default ForgotPassword;
 //   console.log(data);
 
 // }
-//   const ForgotPasswordForm = () => (
-//     <ForgotPasswordFormFormForm>
-//       <input type="email" name="email"  />
-//       {/* <AuthInputs
-//         value={email}
-//         autoFocus
-//         onChange={(e) => setEmail(e.target.value)}
-//         // onChange={(e) =>setEm}
-//         type="email"
-//         title="Enter your email address and we'll send you a link to reset your password.
-// "
-//       /> */}
-//           <Primary
-//         disabled={!email}
-//         color={"#222"}
-//         title={"Submit"}
-//         // onClick={() => handleSubmit(submitForm)}
-//         style={{ width: "200px", display:'flex', alignItems:'center', justContent:'center',   marginTop: "30px", borderRadius: "2px" }}
-//       />
-//       {/* <br />
-//       <button type="submit" className="btn btn-raised" disabled={!email}>
-//         Submit
-//       </button> */}
-//     </ForgotPasswordFormFormForm>
-//   );
-
-//   const onSubmit = data => console.log(data);
-//   return (
-//     <ForgotPasswordFormContainer>
-//       <ForgotPasswordFormContainerInner>
-//         <ForgotPasswordFormTop>
-//           <span>Reset your password</span>
-//         </ForgotPasswordFormTop>
-
-//         <ForgotPasswordFormForm>
-//           {/* <div className="container col-md-6 offset-md-3 p-10"> */}
-//           {/* {loading ? <h4>Loading ...</h4> : <h4>Forgot Password ? </h4>} */}
-//           {/* {ForgotPasswordForm()} */}
-//           <form>
-//           <input {...register("email")} />
-//           </form>
-//           <p>{errors.email?.message}</p>
-
-//           <Primary
-//         // disabled={!email}
-//         color={"#222"}
-//         title={"Submit"}
-//         onClick={handleSubmit(onSubmit)}
-//         // onClick={() => handleSubmit(submitForm)}
-//         style={{ width: "200px", display:'flex', alignItems:'center', justContent:'center',   marginTop: "30px", borderRadius: "2px" }}
-//       />
-//           <ToastContainer />
-//           {/* </div> */}
-//         </ForgotPasswordFormForm>
-//       </ForgotPasswordFormContainerInner>
-//     </ForgotPasswordFormContainer>
-//   );
-// };
-
-// export default ForgotPassword;
