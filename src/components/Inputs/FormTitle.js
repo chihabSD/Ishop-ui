@@ -11,6 +11,8 @@ const Title = styled.div`
   font-weight: 700;
   margin: 1px 20px;
   padding-top: 10px;
+  
   /* color: ${({ isError }) => (isError ? "red" : "#222")}; */
   color:  "#222"
+
 `;

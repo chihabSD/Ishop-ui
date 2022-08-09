@@ -1,17 +1,19 @@
 import styled from "styled-components";
 export const HeaderContainer = styled.div`
-  height: 80px;
+  height: 100px;
   border-bottom: 0.5px solid rgb(231, 228, 228);
   display: flex;
   align-items: center;
   font-size: 14px;
   color: #555;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
+  max-width: 1400px;
 
-
+margin: 0 auto;
+background:#ffffff;
   /* padding: 0 10 20px 10%; */
   /* padding: 3% 10%; */
-  
+  width: 100% !important; 
   padding-left: 10%;
   padding-right: 10%;
 
@@ -102,13 +104,19 @@ export const HeaderRightItem = styled.div`
   /* padding: 10px; */
   /* width: 70px; */
   /* height: 50px; */
-  margin-right: 20px;
+  margin-right: 15px;
+  /* background-color: blue; */
   display: flex;
   align-items: center;
+  /* width: 70px;
+  height: 70px;
+  border-radius: 50%; */
   position: relative;
   justify-content: center;
   padding: 5px;
   
+  background-color: gray;
+    /* background-color: #ece8ff; */
   cursor: pointer;
   &:hover {
     border-radius: 50%;
@@ -120,7 +128,6 @@ export const HeaderRightItem = styled.div`
 /* padding: 5px; */
 /* height: 50px;
 width: 50px; */
-    background-color: #ece8ff;
   }
   span {
     font-size: 1rem;
@@ -135,6 +142,7 @@ export const Avatar = styled.img`
 `;
 export const Counter = styled.div`
   width: 15px;
+  padding: 10px;
   height: 15px;
   background-color: red;
   border-radius: 50%;

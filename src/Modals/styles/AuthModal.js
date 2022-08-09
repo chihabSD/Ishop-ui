@@ -6,6 +6,7 @@ export const AuthModalContainer = styled.div`
   min-height: 80%;
   display: flex;
   border: none;
+  /* background: white; */
 `;
 // LEFT
 export const AuthModalContainerLeft = styled.div`
@@ -28,6 +29,7 @@ export const AuthModalContainerLeftHeaderTitle = styled.div`
   align-items: center;
 
   font-weight: 700;
+  /* line-height: 18px; */
   span {
     font-size: 1rem;
   }
@@ -57,6 +59,7 @@ export const AuthModalContainerForm = styled.form`
 `;
 export const TermsContainer = styled.form`
   /* margin-top: 10px; */
+  line-height: 18px;
   padding-top: 20px;
   /* background-color: aliceblue; */
   /* padding: 20px; */

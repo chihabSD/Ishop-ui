@@ -3,9 +3,12 @@ import {
   LoginOutlined,
   SettingFilled,
   SettingOutlined,
+  
 } from "@ant-design/icons";
 import React, { useRef } from "react";
 import { useClickOutSide } from "../../hooks/useClickOutside";
+import { Divider } from "../divider";
+import './style/index.css'
 import {
   Avatar,
   Container,
@@ -21,6 +24,7 @@ const UserMenu = ({ setShowUserMenu }) => {
     // menu.current.style.display = 'none'
     setShowUserMenu(false);
   });
+  const fontSize = '20px'
   return (
     <Container ref={menu}>
       <ContentWrapper>
@@ -32,26 +36,24 @@ const UserMenu = ({ setShowUserMenu }) => {
             />
           </ProfileMenuItemLeft>
           <ProfileMenuItemRight>
-            <p>Chihbeddine ahmed</p>
-            <h4>View yoru profile</h4>
+            <h4>Chihab adam</h4>
+            <p>View your profile </p>
           </ProfileMenuItemRight>
         </ProfileMenuItem>
+
+        
         <ProfileMenuItem>
-          <GiftFilled className="icon" />
+          <GiftFilled className="icon" style={{fontSize}} />
           <p>Gift card baalance $0.00</p>
         </ProfileMenuItem>
         <ProfileMenuItem>
-          <SettingFilled className="icon" />
+          <SettingFilled className="icon" style={{fontSize}} />
           <p>Account settings</p>
         </ProfileMenuItem>
-        <br />
-
-        <br />
-
-        <br />
-
-        <ProfileMenuItem>
-          <LoginOutlined className="icon" />
+        
+<Divider />  
+        <ProfileMenuItem onClick={()=> console.log('Testing')}>
+          <LoginOutlined className="icon" style={{fontSize}}  />
           <p>Logout</p>
         </ProfileMenuItem>
       </ContentWrapper>

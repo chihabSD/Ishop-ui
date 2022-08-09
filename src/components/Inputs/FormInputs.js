@@ -25,6 +25,7 @@ const FormInputs = ({
 export default FormInputs;
 
 export const Container = styled.div`
+  line-height: 30px;
   background-color: white;
   width: ${({ width }) => (width ? width : "70%")};
   /* margin-top: 1px; */
@@ -49,4 +50,5 @@ export const Container = styled.div`
 export const Title = styled.div`
   font-size: 0.9rem;
   font-weight: 700;
+
 `;

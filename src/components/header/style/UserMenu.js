@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+    line-height: 3px;
   position: absolute;
   transition: opacity 180ms ease-out,
     box-shadow 180ms cubic-bezier(0.175, 0.885, 0.4, 1.1),
@@ -12,14 +13,13 @@ const Container = styled.div`
   visibility: visible;
   min-width: 250px;
   max-width: 300px;
-  background-color: yellow;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
   background: #fff;
-
-  top: 3.4em;
-  right: -1.8em;
+/* z-index: 999; */
+  top: 4.2em;
+  right: -2.7rem;
   &::after {
     content: "";
     display: block;
@@ -60,7 +60,7 @@ const ProfileMenuItem = styled.div`
   display: flex;
   align-items: center;
   background-color: white;
-  padding: 10px;
+  padding: 7px;
   /* width: 220px; */
   /* margin: 0 20px 5px 15px; */
   margin-top: 1px;
@@ -69,9 +69,8 @@ const ProfileMenuItem = styled.div`
   /* padding: 10px; */
   h4 {
     /* font-size: 0.9rem; */
-    text-align: center;
-    font-weight: 800;
-    font-size: 16px;
+    font-weight: 900;
+    font-size: 17px;
     line-height: 20px;
   }
   p {
@@ -80,9 +79,9 @@ const ProfileMenuItem = styled.div`
 
     font-family: "Graphik Webfont", -apple-system, "Helvetica Neue",
       "Droid Sans", Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 14px;
-    line-height: 18px;
+    /* line-height: 18px; */
   }
 
   &:hover {
@@ -94,35 +93,28 @@ const ProfileMenuItem = styled.div`
 `;
 
 const ProfileMenuItemLeft = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-color: white;
   border-radius: 50%;
 `;
 
 const ProfileMenuItemRight = styled.div`
   flex: 1;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   display: flex;
   align-items: center;
   flex-direction: column;
   /* background-color: blue; */
-
-  &:first-child {
-    font-family: "Graphik Webfont", -apple-system, "Helvetica Neue",
-      "Droid Sans", Arial, sans-serif;
-    font-weight: 700;
-    line-height: 20px;
-  }
-
 `;
 const Avatar = styled.img`
-width: 100%;
-height: 100%;
-border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin-left: 10px;
 `;
 
- /*--------------------END OF ITEMS-----------*/
+/*--------------------END OF ITEMS-----------*/
 export {
   Avatar,
   Container,

@@ -21,6 +21,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import Footer from "./components/footer";
 import { ParentContainer } from "./styles/Containers";
 import Home from "./pages/home";
+import '../src/fontAwesome';
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
