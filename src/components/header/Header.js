@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Menu } from "antd";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
+import './style/index.css'
 import {
   AppstoreOutlined,
   SettingOutlined,
@@ -13,6 +14,10 @@ import {
   BulbOutlined,
   MenuOutlined,
   BellOutlined,
+  SettingFilled,
+  DownOutlined,
+  DownCircleFilled,
+  CaretDownFilled,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
@@ -70,6 +75,7 @@ const Header = ({ history }) => {
   
 
 const fontSize = '20px'
+const color = 'blue'
   return (
     <HeaderContainer>
       {modal && <AuthModal toggleModal={toggleModal} />}
@@ -99,7 +105,7 @@ const fontSize = '20px'
             <BellOutlined style={{ fontSize }} />
           </HeaderRightItem>
           <HeaderRightItem>
-            <SettingOutlined />
+            <SettingFilled />
           </HeaderRightItem>
           {authenticated && (
             <HeaderRightItem onClick={()=>setShowUserMenu(prev => !prev)} >
@@ -107,6 +113,7 @@ const fontSize = '20px'
                 src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
                 alt=""
               />
+              <CaretDownFilled style={{marginLeft:'5px', color:'gray', fontSize:'17px'}}  />
               {showUserMenu &&<UserMenu setShowUserMenu={setShowUserMenu}/>}
             </HeaderRightItem>
           )}

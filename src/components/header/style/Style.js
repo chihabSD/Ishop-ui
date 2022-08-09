@@ -107,11 +107,19 @@ export const HeaderRightItem = styled.div`
   align-items: center;
   position: relative;
   justify-content: center;
+  padding: 5px;
   
   cursor: pointer;
   &:hover {
     border-radius: 50%;
+/* padding: 10px; */
+  /* overflow: hidden; */
+  transition: all 0.7s; 
+  /* padding: 10px; */
+  /* z-index: 999; */
 /* padding: 5px; */
+/* height: 50px;
+width: 50px; */
     background-color: #ece8ff;
   }
   span {
