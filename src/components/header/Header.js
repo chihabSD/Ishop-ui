@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Menu } from "antd";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
@@ -36,14 +36,17 @@ import {
   Icons,
   Avatar,
   Counter,
-} from "./Style";
+} from "./style/Style";
 import AuthModal from "../../Modals/AuthModal";
+import { useClickOutSide } from "../../hooks/useClickOutside";
+import UserMenu from "./UserMenu";
 const { SubMenu, Item } = Menu;
 
 const Header = ({ history }) => {
-  const location = useLocation();
+  const useMenuRef = useRef(null)
   // console.log(location);
   const { user, dispatch, authenticated } = useRedux();
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const [current, setCurrent] = useState("home");
   const [modal, setModal] = useState(false);
 
@@ -64,7 +67,9 @@ const Header = ({ history }) => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
   }, [modal]);
-  const fontSize = "20px";
+  
+
+const fontSize = '20px'
   return (
     <HeaderContainer>
       {modal && <AuthModal toggleModal={toggleModal} />}
@@ -97,11 +102,12 @@ const Header = ({ history }) => {
             <SettingOutlined />
           </HeaderRightItem>
           {authenticated && (
-            <HeaderRightItem>
+            <HeaderRightItem onClick={()=>setShowUserMenu(prev => !prev)} >
               <Avatar
                 src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
                 alt=""
               />
+              {showUserMenu &&<UserMenu setShowUserMenu={setShowUserMenu}/>}
             </HeaderRightItem>
           )}
         </HeaderRight>
