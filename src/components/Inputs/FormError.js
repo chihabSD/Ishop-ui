@@ -1,18 +1,15 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
-const FormError = ({error}) => {
-    console.log(error);
+import { COLORS } from "../../constants/theme";
+const FormError = ({ error, style }) => {
   return (
-    <ErrorContainer>
-        <p>{error}</p>
+    <ErrorContainer style={{...style}}>
+      <p>{error}</p>
     </ErrorContainer>
+  );
+};
 
-  )
-}
-
-export default FormError
-
-
+export default FormError;
 
 // import React from "react";
 // import styled from "styled-components";
@@ -28,12 +25,10 @@ const ErrorContainer = styled.div`
   /* margin: 1px 20px; */
   /* padding-top: 10px; */
   p {
+    color: ${({ error }) => !error && COLORS.red};
+    font-size: 1rem;
 
-  color: ${({ error }) => (!error ? "#F65A83" : "#222")}; 
-  font-size: 1.1rem;
-
-   font-size: 1rem;
-   font-weight: 700;
+    font-size: 0.9rem;
+    /* font-weight: 600; */
   }
-
 `;

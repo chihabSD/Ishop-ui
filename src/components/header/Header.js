@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from "antd";
-import "./style.scss";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
 import {
@@ -11,9 +10,9 @@ import {
   LogoutOutlined,
   GlobalOutlined,
   SearchOutlined,
-  BulbOutlined, 
-MenuOutlined,
-BellOutlined
+  BulbOutlined,
+  MenuOutlined,
+  BellOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
@@ -48,8 +47,8 @@ const Header = ({ history }) => {
   const [current, setCurrent] = useState("home");
   const [modal, setModal] = useState(false);
 
-  const toggleModal= (e) => {
-  setModal(prev => !prev)
+  const toggleModal = (e) => {
+    setModal((prev) => !prev);
   };
   const handleClick = (e) => {
     // console.log(e.key);
@@ -62,17 +61,13 @@ const Header = ({ history }) => {
   };
 
   useEffect(() => {
-
-    if(modal) document.body.style.overflow ='hidden';
-    else document.body.style.overflow ='visible'
-  }, [modal])
-  const fontSize = '20px'
+    if (modal) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "visible";
+  }, [modal]);
+  const fontSize = "20px";
   return (
     <HeaderContainer>
-      {modal &&
-      
-      <AuthModal toggleModal={toggleModal} />
-      }
+      {modal && <AuthModal toggleModal={toggleModal} />}
       <HeaderWrapper>
         <HeaderLeft>
           <Logo>
@@ -84,8 +79,8 @@ const Header = ({ history }) => {
           </SearchContainer>
         </HeaderLeft>
         <HeaderRight>
-          <HeaderRightItem onClick={()=>toggleModal()}>
-            <span>Sign in</span>
+          <HeaderRightItem onClick={() => toggleModal()}>
+            <span>Sign in </span>
           </HeaderRightItem>
           {/* <HeaderRightItem>
             <GlobalOutlined />
@@ -101,13 +96,14 @@ const Header = ({ history }) => {
           <HeaderRightItem>
             <SettingOutlined />
           </HeaderRightItem>
-
-          <HeaderRightItem>
-            <Avatar
-              src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
-              alt=""
-            />
-          </HeaderRightItem>
+          {authenticated && (
+            <HeaderRightItem>
+              <Avatar
+                src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
+                alt=""
+              />
+            </HeaderRightItem>
+          )}
         </HeaderRight>
       </HeaderWrapper>
     </HeaderContainer>

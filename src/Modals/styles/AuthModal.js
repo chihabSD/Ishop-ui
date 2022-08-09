@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 export const AuthModalContainer = styled.div`
   width: 470px;
-  height: 80%;
+  /* height: 80%; */
+  min-height: 80%;
   display: flex;
   border: none;
 `;

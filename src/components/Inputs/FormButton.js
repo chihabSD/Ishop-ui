@@ -20,12 +20,12 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin: 0 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-top: 10px;
   /* border: 2px solid black; */
   justify-content: center;
   /* border: 0.5px solid lightgray; */
-  border: 2px solid black;
+  border: 2px solid  ${({ color }) => (color ? color : "lightgray")};;
   padding: 10px 30px;
   font-weight: 700;
   pointer-events: ${({error}) => (error ? 'none':'auto')};
@@ -34,7 +34,8 @@ const Container = styled.div`
   cursor: pointer;
   &:hover {
     /* border: 1px solid black; */
-    background-color: ${({ color }) => (color ? "#49475B " : "#fff")};
+    background-color: ${({ color }) => (color ? color : "lightgray")};
+    /* background-color: ${({ color }) => (color ? "#49475B" : "#fff")}; */
     /* border: ${({ color }) => (color ? "none " : "#fff")}; */
   }
   span {

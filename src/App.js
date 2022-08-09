@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, useMatch } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 // import Home from "./pages/Home/index";
@@ -42,31 +42,36 @@ const App = () => {
     });
     return () => unsubscribe();
   }, []);
-
+  
+//   const navigation = useNavigate()
+//   const location = useLocation();
+// console.log(navigation);
   return (
     <Provider store={store}>
-      <Header />
+      {/* <Header /> */}
 
-<ParentContainer>
+      <ParentContainer>
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route exact path="/admindashboard" element={<AdminDashboard />} />
+            <Route exact path="/" element={<Home />} />
+          </Route>
 
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route exact path="/admindashboard" element={<AdminDashboard />} />
-        </Route>
-
-        <Route element={<PublicRoutes />}>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/forgot/password" element={<ForgotPassword />} />
-          <Route
-            exact
-            path="/register/complete"
-            element={<RegisterComplete />}
-          />
-          <Route exact path="/register" element={<Register />} />
-        </Route>
-      </Routes>
-</ParentContainer>
+          <Route element={<PublicRoutes />}>
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/forgot/password" element={<ForgotPassword />} />
+            <Route
+              exact
+              path="/register/complete"
+              element={<RegisterComplete />}
+            />
+            <Route exact path="/register" element={<Register />} />
+          </Route>
+            <Route exact path="*" element={<div> Uh oh!
+Sorry, the page you were looking for was not found.
+Go back to Etsy.com </div>} />
+        </Routes>
+      </ParentContainer>
       <Footer />
     </Provider>
   );

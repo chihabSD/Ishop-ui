@@ -12,6 +12,7 @@ import { async } from "@firebase/util";
 import axios from "axios";
 import setAutheader from "../../api/setAutheader";
 import { sendEmailLink } from "./sendeEmailLink";
+import Header from "../../components/header/Header";
 const Login = ({ history }) => {
   const navigate = useNavigate
   const { dispatch, loading, user } = useRedux();
@@ -116,6 +117,8 @@ const Login = ({ history }) => {
     </form>
   );
   return (
+    <div>
+      <Header />
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
@@ -142,6 +145,7 @@ const Login = ({ history }) => {
         </div>
       </div>
       <ToastContainer />
+    </div>
     </div>
   );
 };

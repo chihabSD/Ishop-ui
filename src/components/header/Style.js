@@ -7,6 +7,23 @@ export const HeaderContainer = styled.div`
   font-size: 14px;
   color: #555;
   padding-bottom: 20px;
+
+
+  /* padding: 0 10 20px 10%; */
+  /* padding: 3% 10%; */
+  
+  padding-left: 10%;
+  padding-right: 10%;
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+padding: 10px 100px 30px 100px;
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  padding: 10px 10% 20px 10%;
+}
 `;
 
 export const HeaderWrapper = styled.div`
@@ -96,6 +113,10 @@ export const HeaderRightItem = styled.div`
     border-radius: 50%;
 /* padding: 5px; */
     background-color: #ece8ff;
+  }
+  span {
+    font-size: 1rem;
+    font-weight: 600;
   }
 `;
 

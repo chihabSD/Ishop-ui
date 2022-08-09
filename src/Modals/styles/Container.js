@@ -11,6 +11,7 @@ export const ModalContainer = styled.div`
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background-color: rgba(0,0,0,0.5);
   
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
