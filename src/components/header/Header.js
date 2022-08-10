@@ -29,7 +29,7 @@ import { auth } from "../../firebase";
 import { _logout } from "../../redux/actions/auth";
 import {
   Items,
-  SearchContainer,
+  // SearchContainer,
   // Wrapper,
   ItemsChild,
   Logo,
@@ -54,8 +54,9 @@ import {
   Left,
   Middle,
   Right,
-  RightItem,
+  RightItem, SearchContainer, 
   LoginButton,
+  SearchForm,
 } from "./style/HeaderStyle";
 const { SubMenu, Item } = Menu;
 
@@ -75,17 +76,14 @@ const Header = ({ history }) => {
     setCurrent(e.key);
   };
 
-  const logout = () => {
-    auth.signOut();
-    dispatch(_logout());
-  };
+
 
   useEffect(() => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
   }, [modal]);
 
-  
+
   const fontSize = "20px";
   const color = "gray";
   return (
@@ -93,7 +91,16 @@ const Header = ({ history }) => {
       {modal && <AuthModal toggleModal={toggleModal} />}
       <Wrapper>
         <Left> LOGO </Left>
-        <Middle>Miiddle</Middle>
+        {/* <Middle> */}
+          <SearchContainer>
+        <SearchForm>
+
+          <input placeholder="Seach for everything..." type='search'/>
+          <button type="submit">Search</button>
+            {/* <SearchOutlined style={{ fontSize }} /> */}
+        </SearchForm>
+          </SearchContainer>
+        {/* </Middle> */}
         <Right>
 
         {!authenticated && 
@@ -119,7 +126,8 @@ const Header = ({ history }) => {
            </RightItem>
         )}
 
-          <RightItem>
+          <RightItem 
+          >
             <HeartOutlined style={{ fontSize }} />
           </RightItem>
         </Right>

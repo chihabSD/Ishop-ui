@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { auth } from "../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ import FormButton from "../../components/Inputs/FormButton";
 import FormError from "../../components/Inputs/FormError";
 
 import {
+  Container,
   ForgotPasswordFormContainer,
   ForgotPasswordFormContainerInner,
   ForgotPasswordFormForm,
@@ -18,6 +19,7 @@ import {
   ForgotPasswordFormTop,
 } from "./styles/ForgotPasswordStyle";
 import FormTitle from "../../components/Inputs/FormTitle";
+import Header from "../../components/header/Header";
 const ForgotPassword = () => {
   const validationSchema = yup.object().shape({
     email: yup
@@ -27,17 +29,16 @@ const ForgotPassword = () => {
   });
   const {
     register,
-    formState: { errors , isValid, isDirty, isSubmitting},
+    formState: { errors, isValid, isDirty, isSubmitting },
     handleSubmit,
-  } = useForm({    resolver: yupResolver(validationSchema) });
+  } = useForm({ resolver: yupResolver(validationSchema) });
   const { loading, authenticated } = useRedux();
- 
+
   const config = {
     url: process.env.REACT_APP_FORGOT_PASSWORD_REDIRECT_URL,
     handleCodeInApp: true,
   };
-  const onSubmit = async ({email}) => {
-    
+  const onSubmit = async ({ email }) => {
     try {
       // sign with the email link that is sent during step 1 of registration
       await auth.sendPasswordResetEmail(email, config);
@@ -69,39 +70,42 @@ const ForgotPassword = () => {
     }
   };
   return (
-    <ForgotPasswordFormContainer>
-      <ForgotPasswordFormFormForm>
-        <ForgotPasswordFormContainerInner>
-          <ForgotPasswordFormTop>
-            <span>Reset your password</span>
-          </ForgotPasswordFormTop>
-          <ForgotPasswordFormForm>
-            <FormTitle
-              title="Enter your email address and we'll send you a link to reset your password."
-              isError={errors.email}
-            />
-            <FormInputs type="text" register={register} name={"email"} />
+    <>
+      <Header />
+      <ForgotPasswordFormContainer>
+        <ForgotPasswordFormFormForm>
+          <ForgotPasswordFormContainerInner>
+            <ForgotPasswordFormTop>
+              <span>Reset your password</span>
+            </ForgotPasswordFormTop>
+            <ForgotPasswordFormForm>
+              <FormTitle
+                title="Enter your email address and we'll send you a link to reset your password."
+                isError={errors.email}
+              />
+              <FormInputs type="text" register={register} name={"email"} />
 
-            <FormButton
-              label="Submit"
-              onClick={handleSubmit(onSubmit)}
-              color="#222"
-              error={!isDirty && !isValid}
-              style={{
-                width: "200px",
-                display: "flex",
-                alignItems: "center",
-                justContent: "center",
-                marginTop: "10px",
-                borderRadius: "2px",
-              }}
-            />
-            {errors.email && <FormError error={errors.email.message} />}
-          </ForgotPasswordFormForm>
-        </ForgotPasswordFormContainerInner>
-      </ForgotPasswordFormFormForm>
-      <ToastContainer />
-    </ForgotPasswordFormContainer>
+              <FormButton
+                label="Submit"
+                onClick={handleSubmit(onSubmit)}
+                color="#222"
+                error={!isDirty && !isValid}
+                style={{
+                  width: "200px",
+                  display: "flex",
+                  alignItems: "center",
+                  justContent: "center",
+                  marginTop: "10px",
+                  borderRadius: "2px",
+                }}
+              />
+              {errors.email && <FormError error={errors.email.message} />}
+            </ForgotPasswordFormForm>
+          </ForgotPasswordFormContainerInner>
+        </ForgotPasswordFormFormForm>
+        <ToastContainer />
+      </ForgotPasswordFormContainer>
+    </>
   );
 };
 

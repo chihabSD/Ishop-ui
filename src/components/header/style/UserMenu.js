@@ -18,7 +18,7 @@ const Container = styled.div`
   border-radius: 12px;
   background: #fff;
 /* z-index: 999; */
-  top: 4.2em;
+  top: 4.3em;
   right: -2.7rem;
   &::after {
     content: "";
