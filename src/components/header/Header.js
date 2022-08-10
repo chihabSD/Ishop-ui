@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from '../../assets/imgs/logo.png'
+import logo from "../../assets/imgs/logo.png";
 import { Menu } from "antd";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
@@ -58,12 +58,12 @@ import {
   RightItem,
   SearchContainer,
   LoginButton,
-  SearchForm,
+  SearchBar,
+  SearchIconContainer,
 } from "./style/HeaderStyle";
 import NotificationMenu from "./NotificationMenu";
 import { useHoverOver } from "../../hooks/useHover";
 const { SubMenu, Item } = Menu;
-
 
 const Header = ({ history }) => {
   const useMenuRef = useRef(null);
@@ -103,14 +103,16 @@ const Header = ({ history }) => {
     <Container>
       {modal && <AuthModal toggleModal={toggleModal} />}
       <Wrapper>
-        <Left> <img src={logo} /> </Left>
-        {/* <Middle> */}
+        <Left>
+          <img src={logo} />{" "}
+        </Left>
         <SearchContainer>
-          <SearchForm>
+          <SearchBar>
             <input placeholder="Seach for everything..." type="search" />
-            <button type="submit">Search</button>
-            {/* <SearchOutlined style={{ fontSize }} /> */}
-          </SearchForm>
+            <SearchIconContainer>
+              <SearchOutlined />
+            </SearchIconContainer>
+          </SearchBar>
         </SearchContainer>
         <RightItem>
           <HeartOutlined style={{ fontSize }} />

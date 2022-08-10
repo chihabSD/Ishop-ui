@@ -13,7 +13,8 @@ export const FooterContainer = styled.div`
   z-index: -1;
   flex-direction: column;
 
-  
+  /* background-color: #330033; */
+
 `;
 
 export const FooterWrapper= styled.div`
