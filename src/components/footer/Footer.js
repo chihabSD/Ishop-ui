@@ -54,7 +54,7 @@ margin-bottom: 30px;
     font-size: 0.9rem;
     /* padding: 10px; */
     margin-top: 25px;
-    font-weight: 300;
+    font-weight: 400;
     /* font-weight: 900; */
     cursor: pointer;
   /* text-transform: uppercase; */
@@ -115,7 +115,58 @@ span {
   font-size: 0.9rem;
 }
 `;
+export const SocialContainer= styled.div`
+padding-top: 30px;
+`
 
+export const DownloadAppButton= styled.div`
+background-color: inherit;
+border-radius: 25px;
+border: 2px solid white;
+justify-content: center;
+display: flex;
+align-items: center;
+padding: 10px;
+
+color: white;
+transition: 0.3s;
+font-size: 20px;
+margin-bottom: 15px;
+cursor: pointer;
+p {
+  margin-left: 10px;
+font-size: 15px;
+
+}
+&:hover {
+  /* border: 5px solid white; */
+  animation: zoom-in-zoom-out 1s ease infinite;
+  transform: scale(1, 1.1);
+}
+/* padding-top: 30px; */
+`
+export const SocialIcons= styled.div`
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 10px;
+/* padding: 10px; */
+color: white;
+font-size: 25px;
+border-radius: 50%;
+padding: 10px;
+cursor: pointer;
+&:hover{
+  transition: 0.3s;
+  background-color: #868B93 ;
+}
+`
+
+export const SocialIconsContainer= styled.div`
+display: flex;
+`
 // Footer bottom
 export const FooterBottom = styled.div`
 
