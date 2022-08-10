@@ -56,6 +56,7 @@ const ContentWrapper = styled.div`
 const ProfileMenuItem = styled.div`
   overflow: hidden;
 
+  
   position: relative;
   display: flex;
   align-items: center;

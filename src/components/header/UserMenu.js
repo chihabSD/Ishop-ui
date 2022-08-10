@@ -1,8 +1,17 @@
 import {
+  BellFilled,
+  BookOutlined,
+  GifOutlined,
   GiftFilled,
+  GiftOutlined,
   LoginOutlined,
+  MessageOutlined,
+  PlusCircleFilled,
+  PlusOutlined,
   SettingFilled,
   SettingOutlined,
+  TagFilled,
+  TagOutlined,
 } from "@ant-design/icons";
 import React, { useRef } from "react";
 import { auth } from "../../firebase";
@@ -50,14 +59,29 @@ const UserMenu = ({ setShowUserMenu }) => {
         </ProfileMenuItem>
 
         <ProfileMenuItem>
-          <GiftFilled className="icon" style={{ fontSize }} />
+          <GiftOutlined className="icon" style={{ fontSize }} />
           <p>Gift card baalance $0.00</p>
         </ProfileMenuItem>
         <ProfileMenuItem>
-          <SettingFilled className="icon" style={{ fontSize }} />
+          <MessageOutlined className="icon" style={{ fontSize }} />
+          <p>Messages</p>
+        </ProfileMenuItem>
+        <ProfileMenuItem>
+          <TagOutlined className="icon" style={{ fontSize }} />
+          <p>Your offers</p>
+        </ProfileMenuItem>
+        <ProfileMenuItem>
+          <BookOutlined className="icon" style={{ fontSize }} />
+          <p>Purchases and reviews</p>
+        </ProfileMenuItem>
+        <ProfileMenuItem>
+          <SettingOutlined className="icon" style={{ fontSize }} />
           <p>Account settings</p>
         </ProfileMenuItem>
-
+        <ProfileMenuItem>
+          <PlusOutlined className="icon" style={{ fontSize }} />
+          <p>Sell with us</p>
+        </ProfileMenuItem>
         <Divider />
         <ProfileMenuItem onClick={() => logout()}>
           <LoginOutlined className="icon" style={{ fontSize }} />

@@ -9,7 +9,7 @@ const Container = styled.div`
   /* box-shadow: 0px 10px 15px -20px  #111;   */
   /* box-shadow: 0px 15px 10px -15px #111;    */
   /* opacity: 1; */
-  box-shadow: 0 -6px 5px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -6px 5px 4px rgba(0, 0, 0, 0.4);
   transform: scaleX(1) scaleY(1) perspective(1px);
 
   /* background-color: yellow; */
@@ -168,18 +168,16 @@ const Right = styled.div`
 // ITEMS
 const RightItem = styled.div`
   margin-left: 10px;
-  background-color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px;
   cursor: pointer;
   border-radius: 24px;
-  display: inline-block;
   font-size: 15px;
   line-height: 1.5;
   min-height: 48px;
-  min-width: 48px;
+  /* min-width: 48px; */
   position: relative;
   text-align: center;
   vertical-align: middle;

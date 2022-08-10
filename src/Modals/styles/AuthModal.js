@@ -42,6 +42,7 @@ export const AuthButton = styled.div`
   transition: background-color 2s ease-out 100ms;
   /* border: 0.5px solid lightgray; */
   padding: 5px 15px;
+  line-height: 18px;
   font-weight: 700;
   cursor: pointer;
   &:hover {

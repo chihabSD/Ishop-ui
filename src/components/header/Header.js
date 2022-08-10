@@ -54,7 +54,8 @@ import {
   Left,
   Middle,
   Right,
-  RightItem, SearchContainer, 
+  RightItem,
+  SearchContainer,
   LoginButton,
   SearchForm,
 } from "./style/HeaderStyle";
@@ -76,59 +77,58 @@ const Header = ({ history }) => {
     setCurrent(e.key);
   };
 
-
-
   useEffect(() => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
   }, [modal]);
 
-
   const fontSize = "20px";
-  const color = "gray";
+  const color = "#d3d3d3";
   return (
     <Container>
       {modal && <AuthModal toggleModal={toggleModal} />}
       <Wrapper>
         <Left> LOGO </Left>
         {/* <Middle> */}
-          <SearchContainer>
-        <SearchForm>
-
-          <input placeholder="Seach for everything..." type='search'/>
-          <button type="submit">Search</button>
+        <SearchContainer>
+          <SearchForm>
+            <input placeholder="Seach for everything..." type="search" />
+            <button type="submit">Search</button>
             {/* <SearchOutlined style={{ fontSize }} /> */}
-        </SearchForm>
-          </SearchContainer>
-        {/* </Middle> */}
+          </SearchForm>
+        </SearchContainer>
+        <RightItem>
+            <HeartOutlined style={{ fontSize }} />
+          </RightItem>
         <Right>
-
-        {!authenticated && 
-          <RightItem onClick={() => toggleModal()}>
-            <p>Sign in</p>
+          {!authenticated && (
+            <RightItem onClick={() => toggleModal()}>
+              <UserOutlined style={{ fontSize }} />
+              <p style={{ marginLeft: "10px" }}>Hi! Log in or sign up</p>
+            </RightItem>
+          )}
+          <RightItem>
+            <BellOutlined style={{ fontSize }} />
+            <CaretDownFilled
+                style={{ marginLeft: "5px", color,  fontSize: "14px" }}
+             />
           </RightItem>
 
-        }
+          {authenticated && (
+            <RightItem onClick={() => setShowUserMenu((prev) => !prev)}>
+              <Avatar
+                src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
+                alt=""
+              />
+              <CaretDownFilled
+                style={{ marginLeft: "5px", color,  fontSize: "14px" }}
+             />
+              {showUserMenu && <UserMenu setShowUserMenu={setShowUserMenu} />}
+            </RightItem>
+          )}
+
           <RightItem>
             <ShoppingCartOutlined style={{ fontSize }} />
-          </RightItem>
-
-                 {authenticated && (
-           <RightItem onClick={() => setShowUserMenu((prev) => !prev)}>
-             <Avatar
-                 src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
-               alt=""
-              />
-             {/* <CaretDownFilled
-                style={{ marginLeft: "2px", color,  fontSize: "17px" }}
-             /> */}
-             {showUserMenu && <UserMenu setShowUserMenu={setShowUserMenu} />}
-           </RightItem>
-        )}
-
-          <RightItem 
-          >
-            <HeartOutlined style={{ fontSize }} />
           </RightItem>
         </Right>
       </Wrapper>
