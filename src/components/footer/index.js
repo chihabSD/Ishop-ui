@@ -6,11 +6,15 @@ import {
   Left,
   Right,
   FooterItem,
+  LeftItem, 
+  FooterWrapper, 
   FooterItemTitle,
 } from "./Footer";
 const Footer = () => {
   return (
     <FooterContainer>
+      <FooterWrapper>
+
       <FooterTop>
         <FooterItem>
           <h1>Shop</h1>
@@ -55,7 +59,11 @@ const Footer = () => {
         </FooterItem>
       </FooterTop>
       <FooterBottom>
-        <Left>Left</Left>
+        <Left>
+          <LeftItem>Ireland</LeftItem>
+          <LeftItem>English(UK)</LeftItem>
+          <LeftItem>$ (EUR)</LeftItem>
+        </Left>
         <Right>
         <span>@ 2022 Ishop, Inc.</span> 
         <ul>
@@ -66,6 +74,7 @@ const Footer = () => {
         </ul>
         </Right>
       </FooterBottom>
+      </FooterWrapper>
     </FooterContainer>
   );
 };

@@ -44,12 +44,18 @@ const Wrapper = styled.div`
   padding-bottom: 12px;
   padding-right: 36px;
   padding-left: 36px;
-  width: 100%;
 `;
 const Left = styled.div`
-  width: 80px;
-  height: 40px;
-  background-color: yellow;
+  /* width: 80px; */
+  /* height: 40px; */
+  padding: 10px;
+  margin-right: 15px;
+  cursor: pointer;
+  img {
+    width: 150px;
+    height: 40px;
+  }
+  /* background-color: yellow; */
 `;
 
 /*----------- middle -----------*/

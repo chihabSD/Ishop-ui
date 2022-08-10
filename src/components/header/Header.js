@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import logo from '../../assets/imgs/logo.png'
 import { Menu } from "antd";
 // import { Language, Search, DarkModeOutlined , FullscreenExitOutlined, NotificationsOutlined, ListOutlined, ChatBubbleOutlined, Brightness1Outlined} from "@mui/icons-material";
 // import { DarkModeContext } from "../../contexts/darkModeContext";
@@ -59,13 +60,18 @@ import {
   LoginButton,
   SearchForm,
 } from "./style/HeaderStyle";
+import NotificationMenu from "./NotificationMenu";
+import { useHoverOver } from "../../hooks/useHover";
 const { SubMenu, Item } = Menu;
+
 
 const Header = ({ history }) => {
   const useMenuRef = useRef(null);
+  const notificatinRef = useRef(null);
   // console.log(location);
   const { user, dispatch, authenticated } = useRedux();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showNotificationMenu, setShowNotificationMenu] = useState(false);
   const [current, setCurrent] = useState("home");
   const [modal, setModal] = useState(false);
 
@@ -77,18 +83,27 @@ const Header = ({ history }) => {
     setCurrent(e.key);
   };
 
+  const [hover1, setHover1] = useState(false);
+  const [hover2, setHover2] = useState(false);
+  useHoverOver(notificatinRef, () => {
+    setHover2(false);
+  });
+  useHoverOver(useMenuRef, () => {
+    setHover1(false);
+  });
   useEffect(() => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
   }, [modal]);
 
+  useEffect(() => {});
   const fontSize = "20px";
   const color = "#d3d3d3";
   return (
     <Container>
       {modal && <AuthModal toggleModal={toggleModal} />}
       <Wrapper>
-        <Left> LOGO </Left>
+        <Left> <img src={logo} /> </Left>
         {/* <Middle> */}
         <SearchContainer>
           <SearchForm>
@@ -98,8 +113,8 @@ const Header = ({ history }) => {
           </SearchForm>
         </SearchContainer>
         <RightItem>
-            <HeartOutlined style={{ fontSize }} />
-          </RightItem>
+          <HeartOutlined style={{ fontSize }} />
+        </RightItem>
         <Right>
           {!authenticated && (
             <RightItem onClick={() => toggleModal()}>
@@ -107,22 +122,46 @@ const Header = ({ history }) => {
               <p style={{ marginLeft: "10px" }}>Hi! Log in or sign up</p>
             </RightItem>
           )}
-          <RightItem>
+          <RightItem
+            onClick={() => setShowNotificationMenu((prev) => !prev)}
+            ref={notificatinRef}
+            onMouseOver={() => setHover2(true)}
+          >
             <BellOutlined style={{ fontSize }} />
             <CaretDownFilled
-                style={{ marginLeft: "5px", color,  fontSize: "14px" }}
-             />
+              style={{ marginLeft: "5px", color, fontSize: "14px" }}
+            />
+
+            {hover2 && (
+              <div className="hoverOver">
+                <p> Updates</p>
+              </div>
+            )}
+            {showNotificationMenu && (
+              <NotificationMenu
+                setShowNotificationMenu={setShowNotificationMenu}
+              />
+            )}
           </RightItem>
 
           {authenticated && (
-            <RightItem onClick={() => setShowUserMenu((prev) => !prev)}>
+            <RightItem
+              onClick={() => setShowUserMenu((prev) => !prev)}
+              ref={useMenuRef}
+              onMouseOver={() => setHover1(true)}
+            >
               <Avatar
                 src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
                 alt=""
               />
               <CaretDownFilled
-                style={{ marginLeft: "5px", color,  fontSize: "14px" }}
-             />
+                style={{ marginLeft: "5px", color, fontSize: "14px" }}
+              />
+              {hover1 && (
+                <div className="hoverOver">
+                  <p>Your account </p>
+                </div>
+              )}
               {showUserMenu && <UserMenu setShowUserMenu={setShowUserMenu} />}
             </RightItem>
           )}

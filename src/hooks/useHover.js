@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect  } from "react";
 
-export const useClickOutSide = (ref, fun) => {
+export const useHoverOver = (ref, fun) => {
 
   
     // Ref element that exist 
@@ -13,15 +13,13 @@ export const useClickOutSide = (ref, fun) => {
         fun()
     }
     // add event listent
-    document.addEventListener('mousedown',listener)
-    document.addEventListener('touchstart',listener)
+    document.addEventListener('mouseover',listener)
     useEffect(() => {
 
         return () => {
 
     // add event listent
-    document.removeEventListener('mousedown',listener)
-    document.removeEventListener('touchstart',listener)
+    document.removeEventListener('mouseover',listener)
         }
         // run when ref is changed
     }, [ref])
