@@ -11,7 +11,6 @@ import {
 
 // Login
 export const _firebaseLogin = (details) => {
-  console.log('_FIREBASELogin is called ', details);
   return async (dispatch) => {
     dispatch(setLoading());
     try {

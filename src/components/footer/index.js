@@ -16,7 +16,13 @@ import {
   SocialIcons,
   SocialIconsContainer
 } from "./Footer";
+import { useLocation } from "react-router-dom";
 const Footer = () => {
+
+  const { pathname } = useLocation();
+  // you can check a more conditions here
+  if (pathname === "/thanks") return null;
+
   return (
     <FooterContainer>
 <div class="custom-shape-divider-top-1660169065">

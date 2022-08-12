@@ -6,6 +6,7 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Item from "./Item";
 // import Header from "../../components/header/Header";
 // import MenuItem from "./sidebar/MenuItem";
@@ -16,9 +17,13 @@ import {
   SettingsMenu,
 } from "./style/AccountSettingStyle";
 
+
 const SideMenu = () => {
+  let navigate = useNavigate(); 
   const [selected, setSelected] = useState(0);
-  const handleSelected = (id) => {
+  const handleSelected = (item) => {
+    const{id, route} = item
+    navigate(route);
     setSelected(id);
   };
   const menus = [
@@ -26,29 +31,40 @@ const SideMenu = () => {
       id: 0,
       name: "Public Profile",
       children: [],
+      route:'/account/profile', 
       icon: <MessageOutlined className="icon" style={{ fontSize: "20px" }} />,
     },
     {
       id: 33,
       name: "Settings",
       children: [],
+      route:'/settings/settings', 
       icon: <SettingFilled className="icon" style={{ fontSize: "20px" }} />,
     },
     {
       id: 1,
       name: "Payments",
       children: [],
+      route:'/settings/payments', 
       icon: (
         <CreditCardOutlined className="icon" style={{ fontSize: "20px" }} />
       ),
     },
     {
-      id: 10,
-      name: "Purchases & Reviews",
+      id: 1190,
+      name: "Purchases",
+      route:'/account/security', 
       children: [],
       icon: <StarFilled className="icon" style={{ fontSize: "20px" }} />,
     },
 
+    {
+      id: 190,
+      name: "Security",
+      route:'/account/security', 
+      children: [],
+      icon: <StarFilled className="icon" style={{ fontSize: "20px" }} />,
+    },
     {
       id: 4,
       name: "Sign Out",
@@ -72,7 +88,7 @@ const SideMenu = () => {
               key={item}
               item={item}
               selected={selected}
-              onClick={() => handleSelected(item.id)}
+              onClick={() => handleSelected(item)}
             />
           ))}
         </SettingsLeft>

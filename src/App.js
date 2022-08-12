@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate, useMatch, UNSAFE_LocationContext } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -23,6 +23,7 @@ import { ParentContainer } from "./styles/Containers";
 import Home from "./pages/home";
 import '../src/fontAwesome';
 import AccountSettings from "./pages/AccountSettings";
+import NotFound from "./pages/404";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -48,13 +49,10 @@ const App = () => {
   // const [currentLocation, setCurrentLocation] = useState('')
   //   const location = useLocation();
   // useEffect(() => {
-  //   console.log(location.pathname);
+  //   console.log(location);
   //   setCurrentLocation(location.pathname)
 
   // }, [location])
-//   const navigation = useNavigate()
-//   const location = useLocation();
-// console.log(navigation);
   return (
     <Provider store={store}>
       {/* <Header /> */}
@@ -77,11 +75,10 @@ const App = () => {
             />
             <Route exact path="/register" element={<Register />} />
           </Route>
-            <Route exact path="*" element={<div> Uh oh!
-Sorry, the page you were looking for was not found.
-Go back to Etsy.com </div>} />
+            <Route exact path="*" element={<NotFound />} />
         </Routes>
-      <Footer />
+        {store.getState().pageReducer.currentPage === '/notFound' ? null :   <Footer />}
+     
     </Provider>
   );
 };

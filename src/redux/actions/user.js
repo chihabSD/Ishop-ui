@@ -11,7 +11,6 @@ export const _getCurrentProfile = () => {
       dispatch(getUserInfo(data.user));
       dispatch(authenticateUser());
       dispatch(clearLoading());
-      console.log(data);
       //  dispatch(
       //   getUserInfo({
       //     name:data.name,
