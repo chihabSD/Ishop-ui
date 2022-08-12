@@ -12,6 +12,7 @@ export const ModalContainer = styled.div`
   background-color: rgba(0,0,0,0.5);
   
   height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

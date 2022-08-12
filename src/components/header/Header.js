@@ -104,7 +104,7 @@ const Header = ({ history }) => {
       {modal && <AuthModal toggleModal={toggleModal} />}
       <Wrapper>
         <Left>
-          <img src={logo} />{" "}
+          <img src={logo} />
         </Left>
         <SearchContainer>
           <SearchBar>
@@ -153,7 +153,8 @@ const Header = ({ history }) => {
               onMouseOver={() => setHover1(true)}
             >
               <Avatar
-                src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
+                src={user.picture}
+                // src="https://images.pexels.com/photos/296282/pexels-photo-296282.jpeg?cs=srgb&dl=pexels-lukas-296282.jpg&fm=jpg"
                 alt=""
               />
               <CaretDownFilled
@@ -168,7 +169,7 @@ const Header = ({ history }) => {
             </RightItem>
           )}
 
-          <RightItem>
+          <RightItem >
             <ShoppingCartOutlined style={{ fontSize }} />
           </RightItem>
         </Right>

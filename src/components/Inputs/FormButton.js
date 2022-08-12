@@ -2,9 +2,9 @@ import React from 'react'
 import styled from "styled-components";
 
 
-const FormButton = ({icon, label, onClick,  color,style, disabled , error}) => {
+const FormButton = ({icon, label, onClick,  color,style, disabled , textColor,  error}) => {
     return (
-      <Container onClick={onClick} error={error} color={color} style={{...style}} >
+      <Container onClick={onClick} error={error} textColor={textColor} color={color} style={{...style}} >
           {icon   && icon}
         <span>{label} </span>
       </Container>
@@ -16,6 +16,8 @@ export default FormButton
 
 
 const Container = styled.div`
+
+
   background: ${({ color }) => (color ? color : "#fff")};
   display: flex;
   align-items: center;
@@ -34,13 +36,14 @@ const Container = styled.div`
   cursor: pointer;
   &:hover {
     /* border: 1px solid black; */
-    background-color: ${({ color }) => (color ? color : "lightgray")};
-    /* background-color: ${({ color }) => (color ? "#49475B" : "#fff")}; */
-    /* border: ${({ color }) => (color ? "none " : "#fff")}; */
+    animation: zoom-in-zoom-out 1s ease infinite;
+  transform: scale(1, 1.1);
+   
   }
   span {
     margin-left: 10px;
     font-size: 1rem;
-    color: ${({ color }) => (color ? "#fff" : "")};
+  color: ${({textColor}) => (textColor ? textColor:'#fff')};
+   
   }
 `;

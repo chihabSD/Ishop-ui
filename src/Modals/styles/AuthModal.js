@@ -6,6 +6,7 @@ export const AuthModalContainer = styled.div`
   min-height: 80%;
   display: flex;
   border: none;
+  z-index: 1;
   /* background: white; */
 `;
 // LEFT

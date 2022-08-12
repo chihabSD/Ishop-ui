@@ -22,6 +22,7 @@ import Footer from "./components/footer";
 import { ParentContainer } from "./styles/Containers";
 import Home from "./pages/home";
 import '../src/fontAwesome';
+import AccountSettings from "./pages/AccountSettings";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -55,6 +56,7 @@ const App = () => {
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route exact path="/admindashboard" element={<AdminDashboard />} />
+            <Route exact path="/account/settings" element={<AccountSettings />} />
             <Route exact path="/" element={<Home />} />
           </Route>
 

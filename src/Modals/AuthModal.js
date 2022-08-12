@@ -47,30 +47,28 @@ const AuthModal = ({ toggleModal }) => {
       .string()
       .email("Please enter a valid email address")
       .required("Email address is required"),
-    password: yup
-      .string()
-      .required("No password provided.")
-      // .min(8, "Password is too short - should be 8 chars minimum.")
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      // ),
+    password: yup.string().required("No password provided."),
+    // .min(8, "Password is too short - should be 8 chars minimum.")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    // ),
   });
-  
 
   const RegisterSchema = yup.object().shape({
     registerEmail: yup
       .string()
       .email("Please enter a valid email to register")
       .required("Email address is required"),
-   
   });
 
   const {
     register,
     formState: { errors, isValid, isDirty, isSubmitting },
     handleSubmit,
-  } = useForm({ resolver: yupResolver(isLogin ? validationSchema:RegisterSchema) });
+  } = useForm({
+    resolver: yupResolver(isLogin ? validationSchema : RegisterSchema),
+  });
 
   const [checked, setChecked] = useState(false);
   const toggleChecked = () => {
@@ -82,13 +80,19 @@ const AuthModal = ({ toggleModal }) => {
   };
 
   // Handle Email password Login
-  const onSubmit = async ({email, password}) => {
+  const onSubmit = async ({ email, password }) => {
     try {
       const data = await auth.signInWithEmailAndPassword(email, password);
       // const { user } = data;
       const idTokenResult = await data.user.getIdTokenResult();
       setAutheader(idTokenResult.token);
-      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: data.user.emailVerified}), navigate)      
+      dispatch(
+        _updateOrCreateUser({
+          token: idTokenResult.token,
+          emailVerified: data.user.emailVerified,
+        }),
+        navigate
+      );
 
       // history.push("/");
       // roleBasedRedirect(user.role)
@@ -99,11 +103,8 @@ const AuthModal = ({ toggleModal }) => {
     }
   };
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { dispatch, loading, user } = useRedux();
-  
-
 
   const googleLogin = async () => {
     try {
@@ -114,19 +115,19 @@ const AuthModal = ({ toggleModal }) => {
       // dispatch(_nativeLogin({ user: "chihafs" }));
       // Requst to our own backend
 
-      dispatch(_updateOrCreateUser({token:idTokenResult.token,   emailVerified: user.emailVerified}))
-     
-
-
+      dispatch(
+        _updateOrCreateUser({
+          token: idTokenResult.token,
+          emailVerified: user.emailVerified,
+        })
+      );
     } catch (error) {
       console.log(error);
       toast.error(error.message);
-      
+
       dispatch(clearLoading());
     }
   };
- 
-
 
   return (
     <ModalContainer>
@@ -138,9 +139,18 @@ const AuthModal = ({ toggleModal }) => {
               <AuthModalContainerLeftHeaderTitle>
                 <span>{isLogin ? `Sign in` : "Create your account"}</span>
               </AuthModalContainerLeftHeaderTitle>
-              <AuthButton onClick={() => toggleIsLogin()}>
+              <FormButton color='white' textColor={'#111'}
+                style={{
+                  border: "2px solid black",
+                  padding: "10px 15px",
+                  color:'black', 
+                  transition: "background-color 2s ease-out 100ms",
+                }}
+                label={isLogin ? `Register` : `Login`}
+              ></FormButton>
+              {/* <AuthButton onClick={() => toggleIsLogin()}>
                 {isLogin ? `Register` : `Login`}
-              </AuthButton>
+              </AuthButton> */}
             </AuthModalContainerLeftHeader>
           </div>
           {/* FORM  */}

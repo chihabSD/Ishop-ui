@@ -1,9 +1,57 @@
 .icon {
-    margin-right: 10px;
+    /* margin-right: 10px; */
     margin-left: 10px;
     font-size: 30px;
     color: #222;
 }
+
+
+.logout {
+    background-color: blue;
+}
+.menuLink {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 7px;
+    /* width: 220px; */
+    /* background-color: blue; */
+    /* margin: 0 20px 5px 15px; */
+    margin-top: 1px;
+    justify-items: center;
+    font-weight: 400;
+    color: #222;
+    
+    /* padding: 10px; */
+   
+}
+
+.menuLink h4 {
+    /* font-size: 0.9rem; */
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 20px;
+  }
+  .menuLink p {
+    /* font-weight: 590; */
+    color: #222222;
+
+    font-family: "Graphik Webfont", -apple-system, "Helvetica Neue",
+      "Droid Sans", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    /* line-height: 18px; */
+  }
+
+  .menuLink:hover {
+    background-color: #f1f1f1;
+  }
+  .menuLink:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
 
 .hoverOver {
     position: absolute;
