@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useLocation, useNavigate, useMatch } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, useMatch, UNSAFE_LocationContext } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 // import Home from "./pages/Home/index";
@@ -45,6 +45,13 @@ const App = () => {
     return () => unsubscribe();
   }, []);
   
+  // const [currentLocation, setCurrentLocation] = useState('')
+  //   const location = useLocation();
+  // useEffect(() => {
+  //   console.log(location.pathname);
+  //   setCurrentLocation(location.pathname)
+
+  // }, [location])
 //   const navigation = useNavigate()
 //   const location = useLocation();
 // console.log(navigation);
@@ -52,13 +59,13 @@ const App = () => {
     <Provider store={store}>
       {/* <Header /> */}
 
-      <ParentContainer>
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route exact path="/admindashboard" element={<AdminDashboard />} />
             <Route exact path="/account/settings" element={<AccountSettings />} />
             <Route exact path="/" element={<Home />} />
           </Route>
+
 
           <Route element={<PublicRoutes />}>
             <Route exact path="/login" element={<Login />} />
@@ -74,7 +81,6 @@ const App = () => {
 Sorry, the page you were looking for was not found.
 Go back to Etsy.com </div>} />
         </Routes>
-      </ParentContainer>
       <Footer />
     </Provider>
   );

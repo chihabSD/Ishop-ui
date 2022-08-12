@@ -6,18 +6,17 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
-import Header from "../../components/header/Header";
-import SideMenu from "../../components/sidebar";
-import { RightContainer } from "../../styles/Containers";
-import MenuItem from "./MenuItem";
+import Item from "./Item";
+// import Header from "../../components/header/Header";
+// import MenuItem from "./sidebar/MenuItem";
 import {
   AccountSettingsContainer,
   SettingsLeft,
   SettingsRight,
   SettingsMenu,
-  Contents,
 } from "./style/AccountSettingStyle";
-const AccountSettings = () => {
+
+const SideMenu = () => {
   const [selected, setSelected] = useState(0);
   const handleSelected = (id) => {
     setSelected(id);
@@ -58,26 +57,29 @@ const AccountSettings = () => {
     },
   ];
   return (
-    <>
-      <Header />
-      <AccountSettingsContainer>
-        <SideMenu />
-        <RightContainer>
-          Rigght side
-        </RightContainer>
-        {/* <div style={{backgroundColor:'white', marginLeft:'30px', marginTop:'20px'}}>
-
+    <AccountSettingsContainer>
+      <div
+        style={{
+          backgroundColor: "white",
+          marginLeft: "30px",
+          marginTop: "20px",
+          margin: '20px'
+        }}
+      >
         <SettingsLeft>
           {menus.map((item) => (
-            <MenuItem key={item} item={item} selected={selected} onClick={()=>handleSelected(item.id)}/>
-           
+            <Item
+              key={item}
+              item={item}
+              selected={selected}
+              onClick={() => handleSelected(item.id)}
+            />
           ))}
         </SettingsLeft>
       </div>
-        <SettingsRight>Right</SettingsRight> */}
-      </AccountSettingsContainer>
-    </>
+     
+    </AccountSettingsContainer>
   );
 };
 
-export default AccountSettings;
+export default SideMenu;

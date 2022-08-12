@@ -1,17 +1,12 @@
 import styled from "styled-components";
 export const AccountSettingsContainer = styled.div`
   background-color: #f1f1f1;
-  /* background-color: rebeccapurple; */
   min-height: 80vh;
   margin-top: 0;
   display: flex;
   /* padding: 10px; */
   justify-content: space-between;
 `;
-
-
-
-
 export const SettingsLeft = styled.div`
   width: 280px;
   padding: 0px 0;
