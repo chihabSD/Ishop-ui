@@ -1,39 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useTabs } from "../../hooks/useTabs";
+import { useRedux } from "../../hooks/useRedux";
+import { setCurrentSettingMenu } from "../../redux/reducers/page";
 import Menu from "./Menu";
 
 const SettingsTabs = () => {
-  const { currentSettingTab, handleCurrentSettingTab } = useTabs();
+  const { settingsMenus, dispatch, currentSettingMenu } = useRedux();
 
-
-const navigate = useNavigate()
-  const menus = [
-    { id: 0, name: "Account", route:'/account/settings/menu' },
-    { id: 1, name: "Preferences", route:'/account/preferences' },
-    { id: 2, name: "Privacy", route:'/account/privacy' },
-    { id: 3, name: "Security", route:'/account/security' },
-    { id: 4, name: "Address", route:'/account/address' },
-    { id: 5, name: "Credit cards", route:'/account/cards' },
-    { id: 6, name: "Emails", route:'/account/emails'  },
-  ];
-
-  
+  const navigate = useNavigate();
 
   const handleTab = (item) => {
-    const{id, route} = item
+    const { id, route } = item;
+
+    dispatch(setCurrentSettingMenu(id));
     navigate(route);
-    handleCurrentSettingTab(id)
   };
 
   return (
     <SettingsMenuContainer>
-      {menus.map((menu) => (
+      {settingsMenus.map((menu) => (
         <Menu
           key={menu.id}
           item={menu}
-          currentSettingTab={currentSettingTab}
+          currentSettingTab={currentSettingMenu}
           onClick={() => handleTab(menu)}
         />
       ))}

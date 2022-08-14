@@ -13,6 +13,8 @@ import axios from "axios";
 import setAutheader from "../../api/setAutheader";
 import { sendEmailLink } from "./sendeEmailLink";
 import Header from "../../components/header/Header";
+import HeaderTwo from "../../components/header/HeaderTwo";
+import FormButton from "../../components/Inputs/FormButton";
 const Login = ({ history }) => {
   const navigate = useNavigate
   const { dispatch, loading, user } = useRedux();
@@ -118,7 +120,9 @@ const Login = ({ history }) => {
   );
   return (
     <div>
-      <Header />
+      <HeaderTwo>
+        <FormButton label="Register" textColor="#111"/>
+      </HeaderTwo>
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">

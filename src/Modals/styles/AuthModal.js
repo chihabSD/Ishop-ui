@@ -90,40 +90,10 @@ export const AuthModalFormLinks = styled.div`
   justify-content: space-between;
 `;
 
-export const CheckboxContainer = styled.div`
-  /* margin-top: 10px; */
-  display: flex;
-  align-items: center;
-span {
-    font-size: 1rem;
-  }
-`;
 
-export const Checkbox = styled.div`
-  /* margin-top: 10px; */
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 0.5px solid lightgray;
 
-  background-color: ${({ checked }) => (checked ? "#49475B " : "#fff")};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  
-`;
 export const AuthModalFormLinksLeft = styled.div`
   /* margin-top: 10px; */
-`;
-
-export const AuthModalFormLinksRight = styled.div`
-  margin-top: 10px;
-  span {
-    text-decoration: underline;
-    color: grey;
-  }
 `;
 
 // LOGIN BUTTON
@@ -155,12 +125,7 @@ export const AuthModalFormMiddle = styled.div`
   }
 `;
 
-// OR
-export const ORContainer = styled.div`
-  display: flex;
-  /* background-color: blue; */
-  align-items: center;
-`;
+
 export const OR = styled.div`
   display: flex;
   justify-content: center;

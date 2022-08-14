@@ -7,15 +7,12 @@ import {
   TermsContainer,
   AuthModalContainerLeftHeader,
   AuthModalContainerLeftHeaderTitle,
-  AuthModalContainerFormContainer,
+ 
   AuthModalContainerForm,
   AuthModalFormLinks,
   AuthModalFormLinksLeft,
   AuthModalFormMiddle,
-  AuthModalFormLinksRight,
-  CheckboxContainer,
-  Checkbox,
-  ORContainer,
+
   OR,
 } from "./styles/AuthModal";
 import {
@@ -24,7 +21,7 @@ import {
   GoogleOutlined,
   MailOutlined,
 } from "@ant-design/icons";
-import { ModalContainer } from "./styles/Container";
+
 import { Link, useNavigate } from "react-router-dom";
 import FormButton from "../components/Inputs/FormButton";
 import FormInputs from "../components/Inputs/FormInputs";
@@ -39,6 +36,7 @@ import { _updateOrCreateUser } from "../redux/actions/auth";
 import { clearLoading } from "../redux/reducers/loader";
 import { toast, ToastContainer } from "react-toastify";
 import { googleAuthProvider, auth } from "../firebase";
+import Background from "./Background";
 
 const AuthModal = ({ toggleModal }) => {
   const [isLogin, setisLogin] = useState(true);
@@ -130,7 +128,7 @@ const AuthModal = ({ toggleModal }) => {
   };
 
   return (
-    <ModalContainer>
+    <Background>
       <AuthModalContainer>
         {/* LEFT */}
         <AuthModalContainerLeft>
@@ -148,9 +146,7 @@ const AuthModal = ({ toggleModal }) => {
                 }}
                 label={isLogin ? `Register` : `Login`}
               ></FormButton>
-              {/* <AuthButton onClick={() => toggleIsLogin()}>
-                {isLogin ? `Register` : `Login`}
-              </AuthButton> */}
+             
             </AuthModalContainerLeftHeader>
           </div>
           {/* FORM  */}
@@ -279,7 +275,7 @@ const AuthModal = ({ toggleModal }) => {
         {/* END RIGHT  */}
       </AuthModalContainer>
       <ToastContainer />
-    </ModalContainer>
+    </Background>
   );
 };
 

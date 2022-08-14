@@ -5,13 +5,28 @@ const useRedux = () => {
   const {
     profileReducer: { user, authenticated },
     loadingReducer: { loading },
+    pageReducer: {
+      currentPage,
+      currentSettingMenu,
+      settingsMenus,
+      currentSideBarMenu,
+      sideBarMenu 
+    },
   } = state;
   return {
     dispatch,
 
     user,
     loading,
-    authenticated
+    authenticated,
+
+    // PAGES
+    currentPage,
+    currentSettingMenu,
+    currentSideBarMenu,
+    settingsMenus,
+    sideBarMenu 
+
   };
 };
 

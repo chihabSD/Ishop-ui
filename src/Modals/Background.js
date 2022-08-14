@@ -1,5 +1,13 @@
+import React from "react";
 import styled from "styled-components";
-export const ModalContainer = styled.div`
+
+const Background = ({ children }) => {
+  return <Container>{children}</Container>;
+};
+
+export default Background;
+
+const Container = styled.div`
   position: fixed;
   top: 10;
   right: 0;
@@ -9,8 +17,8 @@ export const ModalContainer = styled.div`
   /* background-color: black; */
   display: flex;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  background-color: rgba(0,0,0,0.5);
-  
+  background-color: rgba(0, 0, 0, 0.5);
+
   height: 100vh;
   width: 100vw;
   display: flex;

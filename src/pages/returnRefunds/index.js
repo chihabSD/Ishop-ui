@@ -11,7 +11,7 @@ import SideMenu from "../../components/sidebar";
 import { AccountSettingsContainer, RightContainer } from "../../styles/Containers";
 import MenuItem from "./MenuItem";
 ;
-const AccountSettings = () => {
+const ReturnRefunds = () => {
 
  
   return (
@@ -20,7 +20,8 @@ const AccountSettings = () => {
       <AccountSettingsContainer>
         <SideMenu />
         <RightContainer>
-          Rigght side ss
+         
+        Return and refunds
         </RightContainer>
       
       </AccountSettingsContainer>
@@ -28,4 +29,4 @@ const AccountSettings = () => {
   );
 };
 
-export default AccountSettings;
+export default ReturnRefunds;

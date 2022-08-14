@@ -5,7 +5,7 @@ import { COLORS } from "../../constants/theme";
 const Menu = ({ item, currentSettingTab, onClick }) => {
   return (
     <Item currentSettingTab={currentSettingTab} item={item} onClick={onClick}>
-      <li>{item.name}</li>
+      <li  onClick={onClick}>{item.name}</li>
     </Item>
   );
 };

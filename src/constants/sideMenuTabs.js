@@ -5,34 +5,41 @@ import {
   StarFilled,
   LogoutOutlined,
   LoginOutlined,
+  UserOutlined, InboxOutlined, LockOutlined
 } from "@ant-design/icons";
 
 export const menusTabs = [
   {
     id: 0,
-    name: "Public Profile",
+    name: "Profile",
     children: [],
-    icon: <MessageOutlined className="icon" style={{ fontSize: "20px" }} />,
+    route:'/account/profile', 
+    icon: <UserOutlined className="icon" style={{ fontSize: "20px" }} />,
   },
   {
-    id: 1,
+    id: 90,
+    name: "Orders",
+    children: [],
+    route:'/account/orders', 
+    icon: <InboxOutlined className="icon" style={{ fontSize: "20px" }} />,
+  },
+  {
+    id: 33,
     name: "Settings",
     children: [],
+    route:'/account/settings/menu', 
     icon: <SettingFilled className="icon" style={{ fontSize: "20px" }} />,
   },
-  {
-    id: 2,
-    name: "Payments",
-    children: [],
-    icon: <CreditCardOutlined className="icon" style={{ fontSize: "20px" }} />,
-  },
-  {
-    id: 3,
-    name: "Purchases & Reviews",
-    children: [],
-    icon: <StarFilled className="icon" style={{ fontSize: "20px" }} />,
-  },
+  
+ 
 
+  {
+    id: 190,
+    name: "Return and refund",
+    route:'/account/returns', 
+    children: [],
+    icon: <LockOutlined className="icon" style={{ fontSize: "20px" }} />,
+  },
   {
     id: 4,
     name: "Sign Out",
