@@ -75,7 +75,7 @@ const UserMenu = ({ setShowUserMenu }) => {
           <BookOutlined className="icon" style={{ fontSize }} />
         </UserMenuItem>
 
-        <UserMenuItem label="Account settings" isLink url="/account/settings">
+        <UserMenuItem label="Account settings" isLink url="/account/settings/menu">
           <SettingFilled className="icon" style={{ fontSize }} />
         </UserMenuItem>
 

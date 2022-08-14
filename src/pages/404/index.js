@@ -22,14 +22,18 @@ const NotFound = () => {
         <h1> 404 </h1>
         <p> We looked everywhere.</p>
         <p>
-          Looks like this page is missing. If you still need help, visit our <Link to="/help/page">help pages</Link>
+          Looks like this page is missing. If you still need help, visit our{" "}
+          <Link to="/help/page">help pages</Link>
         </p>
 
         <FormButton
           label="Go to homepage"
           color="#111"
-          onClick={() => navigate("/")}
-          style={{marginTop:'30px'}}
+          onClick={() => {
+            navigate("/");
+            dispatch(setCurrentPage("/"));
+          }}
+          style={{ marginTop: "30px" }}
         />
       </Body>
     </Container>

@@ -11,9 +11,11 @@ min-height:55vh;
 export const RightContainer = styled.div`
   background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   margin: 20px;
   margin-left: 0;
   flex: 1;
+
+  flex-direction: ${({ direction }) => (direction ? direction : "row")};
 `;

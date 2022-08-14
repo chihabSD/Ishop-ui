@@ -8,73 +8,48 @@ import {
 import React, { useState } from "react";
 import Header from "../../components/header/Header";
 import SideMenu from "../../components/sidebar";
+import { useRedux } from "../../hooks/useRedux";
+import { useTabs } from "../../hooks/useTabs";
 import { RightContainer } from "../../styles/Containers";
 import MenuItem from "./MenuItem";
+import SettingMenu from "./SettingMenu";
 import {
   AccountSettingsContainer,
   SettingsLeft,
   SettingsRight,
   SettingsMenu,
-  Contents,
 } from "./style/AccountSettingStyle";
+import { SettingsContents, SettingsMenuContainer } from "./style/SettingsTabs";
 const AccountSettings = () => {
-  const [selected, setSelected] = useState(0);
-  const handleSelected = (id) => {
-    setSelected(id);
-  };
+const {currentSettingTab, handleCurrentSettingTab} =   useTabs()
   const menus = [
-    {
-      id: 0,
-      name: "Public Profile",
-      children: [],
-      icon: <MessageOutlined className="icon" style={{ fontSize: "20px" }} />,
-    },
-    {
-      id: 33,
-      name: "Settings",
-      children: [],
-      icon: <SettingFilled className="icon" style={{ fontSize: "20px" }} />,
-    },
-    {
-      id: 1,
-      name: "Payments",
-      children: [],
-      icon: (
-        <CreditCardOutlined className="icon" style={{ fontSize: "20px" }} />
-      ),
-    },
-    {
-      id: 10,
-      name: "Purchases & Reviews",
-      children: [],
-      icon: <StarFilled className="icon" style={{ fontSize: "20px" }} />,
-    },
-
-    {
-      id: 4,
-      name: "Sign Out",
-      children: [],
-      icon: <LoginOutlined className="icon" style={{ fontSize: "20px" }} />,
-    },
+    { id: 0, name: "Account" },
+    { id: 1, name: "Preferences" },
+    { id: 2, name: "Privacy" },
+    { id: 3, name: "Security" },
+    { id: 4, name: "Address" },
+    { id: 5, name: "Credit cards" },
+    { id: 6, name: "Email" },
   ];
+
   return (
     <>
       <Header />
-      <AccountSettingsContainer>
+      <AccountSettingsContainer >
         <SideMenu />
-        <RightContainer>
-          Rigght side
-        </RightContainer>
-        {/* <div style={{backgroundColor:'white', marginLeft:'30px', marginTop:'20px'}}>
 
-        <SettingsLeft>
-          {menus.map((item) => (
-            <MenuItem key={item} item={item} selected={selected} onClick={()=>handleSelected(item.id)}/>
-           
-          ))}
-        </SettingsLeft>
-      </div>
-        <SettingsRight>Right</SettingsRight> */}
+        {/* Right container  */}
+        <RightContainer direction="column" >
+          <SettingsMenuContainer>
+           {menus.map(menu => (
+            <SettingMenu  key={menu.id} item={menu} currentSettingTab={currentSettingTab}/>
+           ))}
+          </SettingsMenuContainer>
+        <SettingsContents>
+          
+          h1
+        </SettingsContents>
+        </RightContainer>
       </AccountSettingsContainer>
     </>
   );

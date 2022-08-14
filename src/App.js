@@ -24,6 +24,7 @@ import Home from "./pages/home";
 import '../src/fontAwesome';
 import AccountSettings from "./pages/AccountSettings";
 import NotFound from "./pages/404";
+import Profile from "./pages/profile";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -53,6 +54,27 @@ const App = () => {
   //   setCurrentLocation(location.pathname)
 
   // }, [location])
+
+  const routes = [
+    {
+      path: "/",
+      exact: true,
+      sidebar: () => <div>home!</div>,
+      main: () => <h2>Home</h2>
+    },
+    {
+      path: "/bubblegum",
+      sidebar: () => <div>bubblegum!</div>,
+      main: () => <h2>Bubblegum</h2>
+    },
+    {
+      path: "/shoelaces",
+      sidebar: () => <div>shoelaces!</div>,
+      main: () => <h2>Shoelaces</h2>
+    }
+  ];
+
+
   return (
     <Provider store={store}>
       {/* <Header /> */}
@@ -60,8 +82,10 @@ const App = () => {
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route exact path="/admindashboard" element={<AdminDashboard />} />
-            <Route exact path="/account/settings" element={<AccountSettings />} />
+            <Route exact path="/account/settings/menu" element={<AccountSettings />} />
+            <Route exact path="/account/profile" element={<Profile />} />
             <Route exact path="/" element={<Home />} />
+            
           </Route>
 
 
@@ -77,7 +101,7 @@ const App = () => {
           </Route>
             <Route exact path="*" element={<NotFound />} />
         </Routes>
-        {store.getState().pageReducer.currentPage === '/notFound' ? null :   <Footer />}
+        {store.getState().pageReducer.currentPage !== '/notFound' ?     <Footer /> : null}
      
     </Provider>
   );

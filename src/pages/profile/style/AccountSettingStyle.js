@@ -3,30 +3,10 @@ export const AccountSettingsContainer = styled.div`
   background-color: #f1f1f1;
   /* background-color: rebeccapurple; */
   min-height: 80vh;
-
-  /* width: 400px; */
-  /* margin: 0 auto;
-  margin-top: 0; */
+  margin-top: 0;
   display: flex;
   /* padding: 10px; */
   justify-content: space-between;
-
-  /* margin: 10px 0px 0 0; */
-
-
- 
-
-  /* background-color: green; */
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-
-
-  padding-right: 36px;
-  padding-left: 36px;
-
-
-
 `;
 
 
