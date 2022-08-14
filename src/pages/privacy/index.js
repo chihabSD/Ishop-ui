@@ -5,7 +5,7 @@ import SettingsContents from "../../components/SettingsContents";
 import SettingsTabs from "../../components/SettingsTabs";
 import SideMenu from "../../components/sidebar";
 import { AccountSettingsContainer, RightContainer } from "../../styles/Containers";
-const Security = () => {
+const Account = () => {
 
   return (
     <>
@@ -17,11 +17,11 @@ const Security = () => {
         <RightContainer direction="column">
           <SettingsTabs />
 
-          <SettingsContents>The Security </SettingsContents>
+          <SettingsContents>The Privacy </SettingsContents>
         </RightContainer>
       </AccountSettingsContainer>
     </>
   );
 };
 
-export default Security;
+export default Account;

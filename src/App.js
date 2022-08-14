@@ -25,6 +25,12 @@ import '../src/fontAwesome';
 import AccountSettings from "./pages/AccountSettings";
 import NotFound from "./pages/404";
 import Profile from "./pages/profile";
+import Privacy from "./pages/privacy";
+import Preferences from "./pages/Preferences";
+import Security from "./pages/security";
+import Address from "./pages/address";
+import Cards from "./pages/cards";
+import Emails from "./pages/emails";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -82,7 +88,13 @@ const App = () => {
         <Routes>
           <Route element={<PrivateRoutes />}>
             <Route exact path="/admindashboard" element={<AdminDashboard />} />
+            <Route exact path="/account/preferences" element={<Preferences />} />
             <Route exact path="/account/settings/menu" element={<AccountSettings />} />
+            <Route exact path="/account/emails" element={<Emails />} />
+            <Route exact path="/account/address" element={<Address />} />
+            <Route exact path="/account/cards" element={<Cards />} />
+            <Route exact path="/account/security" element={<Security />} />
+            <Route exact path="/account/privacy" element={<Privacy />} />
             <Route exact path="/account/profile" element={<Profile />} />
             <Route exact path="/" element={<Home />} />
             

@@ -58,12 +58,11 @@ const HeartSvg = () => (
       id: 33,
       name: "Settings",
       children: [],
-      route:'/settings/settings', 
+      route:'/account/settings/menu', 
       icon: <SettingFilled className="icon" style={{ fontSize: "20px" }} />,
     },
     {
 
-      
       id: 1,
       name: "Payments",
       children: [],
