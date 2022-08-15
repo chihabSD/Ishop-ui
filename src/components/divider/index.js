@@ -9,4 +9,5 @@ export const Divider = ({style}) => {
 
 const Container = styled.div`
   margin-top: 30px;
+  
 `;

@@ -14,6 +14,7 @@ export const RightContainer = styled.div`
   /* justify-content: center; */
   /* align-items: center; */
   margin: 20px;
+  /* padding: 10px 0px; */
   margin-left: 0;
   flex: 1;
 

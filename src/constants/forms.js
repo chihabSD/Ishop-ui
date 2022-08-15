@@ -23,4 +23,8 @@
     },
   ];
   
+
+  
+  
+
   export  {registerInputs, loginInputs}
