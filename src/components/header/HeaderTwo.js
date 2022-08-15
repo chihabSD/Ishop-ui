@@ -27,7 +27,8 @@ justify-content: space-between;
   /* opacity: 1; */
   box-shadow: 0 -6px 5px 4px rgba(0, 0, 0, 0.4);
   transform: scaleX(1) scaleY(1) perspective(1px);
-  padding: 1% 15%;
+  padding: 2% 15%;
+  margin-bottom: 30px;
   /* background-color: yellow; */
   /* background: #fff; */
   /* height: 100vh; */

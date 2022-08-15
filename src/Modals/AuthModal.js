@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import {
   AuthModalContainer,
   AuthModalContainerLeft,
-  AuthButton,
   AuthModalContainerRight,
   TermsContainer,
   AuthModalContainerLeftHeader,
   AuthModalContainerLeftHeaderTitle,
  
-  AuthModalContainerForm,
   AuthModalFormLinks,
   AuthModalFormLinksLeft,
   AuthModalFormMiddle,
@@ -37,6 +35,8 @@ import { clearLoading } from "../redux/reducers/loader";
 import { toast, ToastContainer } from "react-toastify";
 import { googleAuthProvider, auth } from "../firebase";
 import Background from "./Background";
+import { AuthContainer } from "../styles/Containers";
+
 
 const AuthModal = ({ toggleModal }) => {
   const [isLogin, setisLogin] = useState(true);
@@ -150,7 +150,7 @@ const AuthModal = ({ toggleModal }) => {
             </AuthModalContainerLeftHeader>
           </div>
           {/* FORM  */}
-          <AuthModalContainerForm>
+          <AuthContainer>
             {isLogin
               ? loginInputs.map((input) => (
                   <FormInputs
@@ -262,7 +262,7 @@ const AuthModal = ({ toggleModal }) => {
                 account settings. We'll never post without your permission.
               </p>
             </TermsContainer>
-          </AuthModalContainerForm>
+          </AuthContainer>
         </AuthModalContainerLeft>
         {/* LEFT END  */}
 

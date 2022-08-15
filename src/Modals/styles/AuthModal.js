@@ -35,23 +35,7 @@ export const AuthModalContainerLeftHeaderTitle = styled.div`
     font-size: 1rem;
   }
 `;
-export const AuthButton = styled.div`
-  display: flex;
-  align-items: center;
-  border-radius: 15px;
-  border: 2px solid black;
-  transition: background-color 2s ease-out 100ms;
-  /* border: 0.5px solid lightgray; */
-  padding: 5px 15px;
-  line-height: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  &:hover {
-    border: 2.5px solid black;
 
-    /* transform: translateY(-1px); */
-  }
-`;
 
 export const AuthModalContainerForm = styled.form`
   margin-top: 10px;

@@ -42,3 +42,11 @@ export const AccountSettingsContainer = styled.div`
   padding-right: 36px;
   padding-left: 36px;
 `;
+
+export const AuthContainer = styled.div`
+  background-color: white;
+
+  border-radius: 25px;
+  width: 80%;
+  margin-right: 15px;
+`;
