@@ -31,7 +31,7 @@ const AccountSettings = () => {
               <h1> Your Public Profile</h1>
               <p> Everything on this page can be seen by anyone</p>
             </Left>
-            <Link to="/account/p">
+            <Link to={`/account/profile/dlsjfsdlfjs`}>
             
             <FormButton label="View profile" textColor="#111" />
             </Link>

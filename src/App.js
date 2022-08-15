@@ -32,6 +32,7 @@ import Cards from "./pages/cards";
 import Emails from "./pages/emails";
 import Orders from "./pages/orders";
 import ReturnRefunds from "./pages/returnRefunds";
+import Me from "./pages/Me";
 const App = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -80,6 +81,13 @@ const App = () => {
             <Route exact path="/account/privacy" element={<Privacy />} />
             <Route exact path="/account/orders" element={<Orders />} />
             <Route exact path="/account/profile" element={<Profile />} />
+
+            <Route path="/account/profile">
+                <Route index element={<Profile />} />
+                <Route path=":userId" element={<Me />} />
+              </Route>
+
+
             <Route exact path="/account/returns" element={<ReturnRefunds />} />
             <Route exact path="/" element={<Home />} />
             
