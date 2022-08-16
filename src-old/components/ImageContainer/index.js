@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const ImageCountainer = ({ img, style }) => {
+const ImageCountainer = ({ img, style, children }) => {
   return (
     <Container style={{ ...style }}>
       <Image src={img} />
+    {children}
     </Container>
   );
 };
@@ -18,6 +19,7 @@ export const Container = styled.div`
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const Image = styled.img`
@@ -25,3 +27,5 @@ export const Image = styled.img`
   height: 100%;
   border-radius: 50%;
 `;
+
+

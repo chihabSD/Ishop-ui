@@ -1,13 +1,7 @@
-import React from 'react'
-import Header from '../../components/header/Header'
-import { HomeContainer } from './Style'
+import React from "react";
 
-const Home = () => {
-  return (
-    <HomeContainer>
-      <Header  />
-    </HomeContainer>
-  )
-}
+const HomeUI = () => {
+  return <div>Home</div>;
+};
 
-export default Home
+export default HomeUI;
