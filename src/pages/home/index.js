@@ -1,7 +1,8 @@
 import React from "react";
+import { HomeUIContainer } from "./Style";
 
 const HomeUI = () => {
-  return <div>Home</div>;
+  return <HomeUIContainer>This is the home container</HomeUIContainer>;
 };
 
 export default HomeUI;

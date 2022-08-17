@@ -1,8 +1,9 @@
 import React from 'react'
+import { FooterUIContainer } from './Style'
 
 const FooterUI = () => {
   return (
-    <div>FooterUI</div>
+    <FooterUIContainer>Foo</FooterUIContainer>
   )
 }
 
