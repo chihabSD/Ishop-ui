@@ -12,7 +12,7 @@ import {
   UserSwitchOutlined,
 } from "@ant-design/icons";
 import Avatar from "antd/lib/avatar/avatar";
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
 import HeaderMenu from "./HeaderMenu";
@@ -27,9 +27,35 @@ import {
   MenuItem,
   CategoriesContanier,
 } from "./Style";
+import UserDropdown from "./UserDropdown";
 
 const HeaderUI = ({ type }) => {
-  const { user, authenticated } = useRedux();
+  const useMenuRef = useRef(null);
+  const notificatinRef = useRef(null);
+  // console.log(location);
+  const { user, dispatch, authenticated } = useRedux();
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showNotificationMenu, setShowNotificationMenu] = useState(false);
+  const [current, setCurrent] = useState("home");
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = (e) => {
+    setModal((prev) => !prev);
+  };
+  const handleClick = (e) => {
+    // console.log(e.key);
+    setCurrent(e.key);
+  };
+
+  // useHoverOver(useMenuRef, () => {
+  //   setHover1(false);
+  // });
+
+  useEffect(() => {
+    if (modal) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "visible";
+  }, [modal]);
+
   const fontSize = "25px";
   const color = "#d3d3d3";
   return (
@@ -43,7 +69,7 @@ const HeaderUI = ({ type }) => {
 
       {/* MENUS  */}
       <MenusContainer>
-        {!authenticated && (
+        {authenticated && (
           <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
             <LoginLabel />
           </HeaderMenu>
@@ -54,9 +80,15 @@ const HeaderUI = ({ type }) => {
             <CaretDownFilled style={{ fontSize: "15px", color }} />
           </HeaderMenu>
         )}
-        {authenticated && (
-          <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
+        {!authenticated && (
+          <HeaderMenu
+            icon={<UserOutlined style={{ fontSize }} />}
+            onClick={() => setShowUserMenu((prev) => !prev)}
+            ref={useMenuRef}
+            // onMouseOver={() => setHover1(true)}
+          >
             <CaretDownFilled style={{ fontSize: "15px", color }} />
+            {showUserMenu && <UserDropdown />}
           </HeaderMenu>
         )}
         <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} />

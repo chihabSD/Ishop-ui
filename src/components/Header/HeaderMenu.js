@@ -2,9 +2,9 @@ import { ArrowDownOutlined, CaretDownFilled } from "@ant-design/icons";
 import React from "react";
 import { HeaderMenuContainer } from "./Style/HeaderMenuStyle";
 
-const HeaderMenu = ({ icon, children, isDown }) => {
+const HeaderMenu = ({ icon, children, isDown, onClick }) => {
   return (
-    <HeaderMenuContainer>
+    <HeaderMenuContainer onClick={onClick}>
       {icon}
       {/* <CaretDownFilled /> */}
 

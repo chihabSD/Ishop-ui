@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderMenuContainer = styled.div`
 /* border: 1px solid blue; */
 margin: 5px;
+position: relative;
 padding: 10px;
 border-radius: 24px;
 display: flex;
