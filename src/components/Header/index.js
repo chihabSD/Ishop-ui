@@ -15,9 +15,11 @@ import Avatar from "antd/lib/avatar/avatar";
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
+import LinkWrapper from "../LinkWrapper";
 import ProfilePicContainer from "../ProfilePicContainer";
 import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
+import NotificationDropDown from "./NotificationDropDown";
 import {
   HeaderContainer,
   SearchContainer,
@@ -63,7 +65,9 @@ const HeaderUI = ({ notFound }) => {
   return (
     <HeaderContainer>
       <LogoContainer>
+      <LinkWrapper url="/">
         <h1>DUKAN</h1>
+      </LinkWrapper>
       </LogoContainer>
 
       {!notFound && (
@@ -77,9 +81,19 @@ const HeaderUI = ({ notFound }) => {
               </HeaderMenu>
             )}
             <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} />
-            {authenticated && (
-              <HeaderMenu icon={<BellOutlined style={{ fontSize }} />}>
+            {!authenticated && (
+              <HeaderMenu icon={<BellOutlined style={{ fontSize }} />}
+              
+              onClick={() => setShowNotificationMenu((prev) => !prev)}
+              ref={notificatinRef}
+              >
                 <CaretDownFilled style={{ fontSize: "15px", color }} />
+
+                {showNotificationMenu && (
+                  <NotificationDropDown
+                    setShowNotificationMenu={() => setShowNotificationMenu(false)}
+                  />
+                )} 
               </HeaderMenu>
             )}
             {!authenticated && (

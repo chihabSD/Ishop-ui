@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
   transform: scaleX(1) scaleY(1) perspective(1px);
   visibility: visible;
   /* grid-template-areas: "logoContainer searchContainer menusContainer"; */
-  
+  /* height: 100px; */
  
   grid-template-areas:
     "logoContainer searchContainer menusContainer"
@@ -43,7 +43,7 @@ export const LogoContainer = styled.div`
   h1 {
     font-size: 30px;
   font-weight: 900;
-  
+
   }
 `;
 
