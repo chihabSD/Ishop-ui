@@ -131,13 +131,15 @@ const HeaderUI = ({ notFound }) => {
               </HeaderMenu>
             )}
             {!authenticated && (
-              <HeaderMenu
+              <HeaderMenu    
+              lockPointer={showUserMenu ? true:false}
                 icon={
                   <ProfilePicContainer
                     style={{ width: fontSize, height: fontSize }}
                   />
                 }
                 onClick={() => setShowUserMenu((prev) => !prev)}
+                // onClick={() => {}}
                 ref={useMenuRef}
               >
                 <CaretDownFilled
@@ -145,6 +147,7 @@ const HeaderUI = ({ notFound }) => {
                 />
                 {showUserMenu && (
                   <UserDropdown
+               
                     setShowUserMenu={() => setShowUserMenu(false)}
                   />
                 )}

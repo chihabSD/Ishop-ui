@@ -31,8 +31,8 @@ const Container = styled.div`
   color: white;
   text-align: center;
   visibility: hidden;
-  z-index: 1;
-  top: 2.7em;
+  /* z-index: 1; */
+  top: 3.5em;
   right: -2.7rem;
   color: #fff;
   text-align: center;

@@ -3,7 +3,7 @@ import React from "react";
 import ToolTip from "../ToolTip";
 import { HeaderMenuContainer } from "./Style/HeaderMenuStyle";
 
-const HeaderMenu = ({ icon, children, isDown, onClick }) => {
+const HeaderMenu = ({ icon, children, isDown, onClick , lockPointer }) => {
   return (
     <HeaderMenuContainer onClick={onClick}>
       {icon}
@@ -12,7 +12,6 @@ const HeaderMenu = ({ icon, children, isDown, onClick }) => {
       {/* <UserOutlined style={{ fontSize }} /> */}
       {/* <p style={{ marginLeft: "10px" }}>Hi! Log in or sign up</p> */}
       {children}
-     
     </HeaderMenuContainer>
   );
 };

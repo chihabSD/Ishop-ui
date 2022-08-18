@@ -18,7 +18,7 @@ import styled from "styled-components";
   background-color: #f1f1f1;
 
   z-index: 1;
-  top: 3.5em;
+  top: 2.8em;
   right: -2.7rem;
   &::after {
     content: "";

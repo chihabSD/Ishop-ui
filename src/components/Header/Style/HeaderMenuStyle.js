@@ -10,7 +10,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 transition: all 0.5s;
+
+/* pointer-events: none; */
 cursor: pointer;
+
  h3 {
     font-size: 30px;
  }
