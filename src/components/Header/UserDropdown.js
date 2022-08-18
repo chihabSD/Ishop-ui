@@ -1,5 +1,6 @@
 import {
   BookOutlined,
+  CaretDownFilled,
   GiftOutlined,
   MessageOutlined,
   PlusOutlined,
@@ -7,15 +8,51 @@ import {
   TagFilled,
   UserAddOutlined,
 } from "@ant-design/icons";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-const UserDropdown = () => {
-  const fontSize = "20px";
+import { auth } from "../../firebase";
+import { _logout } from "../../redux/actions/auth";
+
+import { useRedux } from "../../hooks/useRedux";
+import ProfilePicContainer from "../ProfilePicContainer";
+import { useClickOutSide } from "../../hooks/useClickOutside";
+import LinkWrapper from "../LinkWrapper";
+const UserDropdown = ({ setShowUserMenu }) => {
+  const { dispatch, user } = useRedux();
+  const menu = useRef(null);
+  useClickOutSide(menu, () => {
+    setShowUserMenu();
+    // menu.current.style.display = 'none'
+    // setShowUserMenu(false);
+  });
+
+  const logout = () => {
+    auth.signOut();
+    dispatch(_logout());
+  };
+  const fontSize = "25px";
 
   return (
-    <Container>
+    <Container ref={menu}>
       <ListContainer>
+        <LinkWrapper url='/account/settings'>
+          <Item
+            style={{
+              borderBottom: "0.5px solid #f1f1f1",
+              marginBottom: "15px",
+            }}
+          >
+            <ProfilePicContainer />
+
+            <ViewProfile>
+              <span>Chihab Ahmed</span>
+              <p style={{ fontWeight: "400", fontSize: "12px" }}>
+                View your profile{" "}
+              </p>
+            </ViewProfile>
+          </Item>
+        </LinkWrapper>
         <Item label={`Gift card baalance $${200}`}>
           <GiftOutlined className="icon" style={{ fontSize }} />
         </Item>
@@ -48,10 +85,10 @@ const UserDropdown = () => {
 
 export default UserDropdown;
 
-const Item = ({ children, isLink, label }) => {
+const Item = ({ children, isLink, label, style }) => {
   return (
-    <li>
-      {children} <p>{label}</p>{" "}
+    <li style={{ ...style }}>
+      {children} {label && <p>{label}</p>}
     </li>
   );
 };
@@ -71,11 +108,8 @@ const Container = styled.div`
   flex-direction: column;
   border-radius: 12px;
 
-  /* min-height: 200px; */
-
   background-color: #f1f1f1;
-  /* min-height: 200px; */
-  /* height: 300px; */
+
   z-index: 1;
   top: 3.5em;
   right: -2.7rem;
@@ -103,7 +137,7 @@ const ListContainer = styled.ul`
   /* padding: 10px; */
   background-color: white;
   text-decoration: none;
-
+  border-radius: inherit;
   &:nth-child(1) {
     /* margin-bottom: 20px; */
     /* padding-bottom: 10px; */
@@ -146,5 +180,19 @@ const ListContainer = styled.ul`
     &:hover {
       background-color: #f1f1f1;
     }
+  }
+`;
+
+const ViewProfile = styled.div`
+  text-align: center;
+  width: 100%;
+  position: relative;
+  /* padding: 10px; */
+  /* padding-bottom: 20px; */
+  line-height: 20px;
+  span {
+    font-weight: 900;
+    font-size: 15px;
+    margin-bottom: 3px;
   }
 `;

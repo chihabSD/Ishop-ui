@@ -7,7 +7,7 @@ import { NotFoundLayoutContainer } from "../Styles/NotFoundLayoutContainer";
 const NotFoundLayout = () => {
   return (
     <NotFoundLayoutContainer>
-      <Header type="Not found heder "/>
+      <Header notFound/>
       <NotFoundUI />
     </NotFoundLayoutContainer>
   );

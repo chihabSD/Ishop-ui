@@ -15,6 +15,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
+import ProfilePicContainer from "../ProfilePicContainer";
 import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
 import {
@@ -27,9 +28,10 @@ import {
   MenuItem,
   CategoriesContanier,
 } from "./Style";
+import { AvatarContainer } from "./Style/HeaderMenuStyle";
 import UserDropdown from "./UserDropdown";
 
-const HeaderUI = ({ type }) => {
+const HeaderUI = ({ notFound }) => {
   const useMenuRef = useRef(null);
   const notificatinRef = useRef(null);
   // console.log(location);
@@ -64,36 +66,47 @@ const HeaderUI = ({ type }) => {
         <h1>DUKAN</h1>
       </LogoContainer>
 
-      {/* SEARCH SECTION  */}
-      <SearchContainer>Search</SearchContainer>
+      {!notFound && (
+        <>
+          <SearchContainer>Search</SearchContainer>
 
-      {/* MENUS  */}
-      <MenusContainer>
-        {authenticated && (
-          <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
-            <LoginLabel />
-          </HeaderMenu>
-        )}
-        <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} />
-        {authenticated && (
-          <HeaderMenu icon={<BellOutlined style={{ fontSize }} />}>
-            <CaretDownFilled style={{ fontSize: "15px", color }} />
-          </HeaderMenu>
-        )}
-        {!authenticated && (
-          <HeaderMenu
-            icon={<UserOutlined style={{ fontSize }} />}
-            onClick={() => setShowUserMenu((prev) => !prev)}
-            ref={useMenuRef}
-            // onMouseOver={() => setHover1(true)}
-          >
-            <CaretDownFilled style={{ fontSize: "15px", color }} />
-            {showUserMenu && <UserDropdown />}
-          </HeaderMenu>
-        )}
-        <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} />
-      </MenusContainer>
-      <CategoriesContanier>Categories</CategoriesContanier>
+          <MenusContainer>
+            {authenticated && (
+              <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
+                <LoginLabel />
+              </HeaderMenu>
+            )}
+            <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} />
+            {authenticated && (
+              <HeaderMenu icon={<BellOutlined style={{ fontSize }} />}>
+                <CaretDownFilled style={{ fontSize: "15px", color }} />
+              </HeaderMenu>
+            )}
+            {!authenticated && (
+              <HeaderMenu
+                icon={
+                  <ProfilePicContainer
+                    style={{ width: fontSize, height: fontSize }}
+                  />
+                }
+                onClick={() => setShowUserMenu((prev) => !prev)}
+                ref={useMenuRef}
+              >
+                <CaretDownFilled
+                  style={{ fontSize: "15px", color, marginLeft: "4px" }}
+                />
+                {showUserMenu && (
+                  <UserDropdown
+                    setShowUserMenu={() => setShowUserMenu(false)}
+                  />
+                )}
+              </HeaderMenu>
+            )}
+            <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} />
+          </MenusContainer>
+          <CategoriesContanier>Categories</CategoriesContanier>
+        </>
+      )}
       {/* <Link to="/">
       <LogoContainer>
         <h1>DUKAN</h1>
