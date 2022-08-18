@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
 import LinkWrapper from "../LinkWrapper";
 import ProfilePicContainer from "../ProfilePicContainer";
+import ToolTip from "../ToolTip";
 import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
 import NotificationDropDown from "./NotificationDropDown";
@@ -95,7 +96,9 @@ const HeaderUI = ({ notFound }) => {
             </SearchBar>
 
               
-          <SearchResult />
+          {/* SEARCH RESULT CONTAINER */}
+          {/* <SearchResult /> */}
+
           </SearchContainer>
 
           <MenusContainer>
@@ -104,7 +107,10 @@ const HeaderUI = ({ notFound }) => {
                 <LoginLabel />
               </HeaderMenu>
             )}
-            <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} />
+            <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} >
+            {/* <ToolTip /> */}
+            <ToolTip text="Favourites" />
+            </HeaderMenu>
             {!authenticated && (
               <HeaderMenu
                 icon={<BellOutlined style={{ fontSize }} />}
@@ -120,6 +126,8 @@ const HeaderUI = ({ notFound }) => {
                     }
                   />
                 )}
+
+            <ToolTip text="Notifications" />
               </HeaderMenu>
             )}
             {!authenticated && (
@@ -140,9 +148,14 @@ const HeaderUI = ({ notFound }) => {
                     setShowUserMenu={() => setShowUserMenu(false)}
                   />
                 )}
+                
+                <ToolTip text="Your account" />
               </HeaderMenu>
             )}
-            <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} />
+            <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} >
+
+            <ToolTip text="Basket" />
+            </HeaderMenu>
           </MenusContainer>
           <CategoriesContanier>Categories</CategoriesContanier>
         </>

@@ -12,6 +12,7 @@ export const useClickOutSide = (ref, fun) => {
         }
         fun()
     }
+    
     // add event listent
     document.addEventListener('mousedown',listener)
     document.addEventListener('touchstart',listener)
