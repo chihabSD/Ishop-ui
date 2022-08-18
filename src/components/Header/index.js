@@ -2,6 +2,9 @@ import {
   BellFilled,
   BellOutlined,
   CaretDownFilled,
+  CloseOutlined,
+  EyeFilled,
+  FileSearchOutlined,
   HeartFilled,
   NotificationFilled,
   ProfileFilled,
@@ -26,8 +29,8 @@ import {
   LogoContainer,
   MenusContainer,
   SearchBar,
-  SearchIconContainer,
-  MenuItem,
+  SearchBarIconsContainer,
+  SearchIcon, 
   CategoriesContanier,
 } from "./Style";
 import { AvatarContainer } from "./Style/HeaderMenuStyle";
@@ -65,14 +68,31 @@ const HeaderUI = ({ notFound }) => {
   return (
     <HeaderContainer>
       <LogoContainer>
-      <LinkWrapper url="/">
-        <h1>DUKAN</h1>
-      </LinkWrapper>
+        <LinkWrapper url="/">
+          <h1>DUKAN</h1>
+        </LinkWrapper>
       </LogoContainer>
 
       {!notFound && (
         <>
-          <SearchContainer>Search</SearchContainer>
+          <SearchContainer>
+            <SearchBar>
+              <input
+                type="text"
+                name=""
+                placeholder="Search for everything..."
+              />
+              <SearchBarIconsContainer>
+                {/* <SearchIcon id="close">
+                  <CloseOutlined style={{ fontSize: "17px" }} />
+                </SearchIcon> */}
+
+                <SearchIcon>
+                  <SearchOutlined style={{ fontSize: "25px" }} />
+                </SearchIcon>
+              </SearchBarIconsContainer>
+            </SearchBar>
+          </SearchContainer>
 
           <MenusContainer>
             {authenticated && (
@@ -82,18 +102,20 @@ const HeaderUI = ({ notFound }) => {
             )}
             <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} />
             {!authenticated && (
-              <HeaderMenu icon={<BellOutlined style={{ fontSize }} />}
-              
-              onClick={() => setShowNotificationMenu((prev) => !prev)}
-              ref={notificatinRef}
+              <HeaderMenu
+                icon={<BellOutlined style={{ fontSize }} />}
+                onClick={() => setShowNotificationMenu((prev) => !prev)}
+                ref={notificatinRef}
               >
                 <CaretDownFilled style={{ fontSize: "15px", color }} />
 
                 {showNotificationMenu && (
                   <NotificationDropDown
-                    setShowNotificationMenu={() => setShowNotificationMenu(false)}
+                    setShowNotificationMenu={() =>
+                      setShowNotificationMenu(false)
+                    }
                   />
-                )} 
+                )}
               </HeaderMenu>
             )}
             {!authenticated && (

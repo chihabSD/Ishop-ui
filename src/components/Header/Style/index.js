@@ -5,6 +5,7 @@ export const HeaderContainer = styled.div`
   background-color: #fff;
   border-bottom: 1px solid #d3d3d3;
   padding: 16px 10%;
+  align-items: center;
   display: grid;
   margin-bottom: 10px;
   border-bottom: 1px solid #d3d3d3;
@@ -49,8 +50,57 @@ export const LogoContainer = styled.div`
 
 export const SearchContainer = styled.div`
   grid-area: searchContainer;
-  background-color: yellow;
+  /* background-color: yellow; */
+  border: 2px solid #111;
+  padding: 5px 10px;
+  border-radius: 24px;
   /* margin: 0 20px; */
+`;
+
+export const SearchBar = styled.div`
+  /* background-color: green; */
+  display: flex;
+  border-radius: inherit;
+  align-items: center;
+  flex: 1;
+  justify-content: space-between;
+ 
+  
+  input[type=text]{
+    flex: 1;
+ border: none;
+  /* border-radius: inherit; */
+  border-radius: 24px;
+  height: 100%;
+  display: block;
+  padding: 10px ;
+  
+  &:focus{
+    outline: none;
+  }
+  }
+  /* margin: 0 20px; */
+`;
+
+export const SearchBarIconsContainer = styled.div`
+width: 10%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+
+
+`;
+export const SearchIcon = styled.div`
+border-radius: 50%;
+cursor: pointer;
+padding: 7px;
+display: flex;
+align-items: center;
+
+justify-content: flex-end;
+&:hover{
+  background-color: #f1f1f1;
+}
 `;
 
 // MENUS CONTIANER 
