@@ -54,6 +54,7 @@ export const SearchContainer = styled.div`
   border: 2px solid #111;
   padding: 5px 10px;
   border-radius: 24px;
+  position: relative;
   /* margin: 0 20px; */
 `;
 

@@ -23,6 +23,7 @@ import ProfilePicContainer from "../ProfilePicContainer";
 import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
 import NotificationDropDown from "./NotificationDropDown";
+import SearchResult from "./SearchResult";
 import {
   HeaderContainer,
   SearchContainer,
@@ -92,6 +93,9 @@ const HeaderUI = ({ notFound }) => {
                 </SearchIcon>
               </SearchBarIconsContainer>
             </SearchBar>
+
+              
+          <SearchResult />
           </SearchContainer>
 
           <MenusContainer>
