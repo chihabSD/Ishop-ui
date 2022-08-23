@@ -6,6 +6,7 @@ import {
   EyeFilled,
   FileSearchOutlined,
   HeartFilled,
+  MenuOutlined,
   NotificationFilled,
   ProfileFilled,
   SearchOutlined,
@@ -18,11 +19,16 @@ import Avatar from "antd/lib/avatar/avatar";
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRedux } from "../../hooks/useRedux";
+import { toggleCategoriesModal } from "../../redux/reducers/modals";
+import HeaderDropDownMenu from "../HeaderDropDownMenu";
 import LinkWrapper from "../LinkWrapper";
+import OverLay from "../Modals";
+import CategoriesModal from "../Modals/CategoriesModal";
 import ProfilePicContainer from "../ProfilePicContainer";
 import ToolTip from "../ToolTip";
 import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
+import MenuIcons from "./MenuIcons";
 import NotificationDropDown from "./NotificationDropDown";
 import SearchResult from "./SearchResult";
 import {
@@ -42,7 +48,7 @@ const HeaderUI = ({ notFound }) => {
   const useMenuRef = useRef(null);
   const notificatinRef = useRef(null);
   // console.log(location);
-  const { user, dispatch, authenticated } = useRedux();
+  const { user, dispatch, authenticated, categoriesModal } = useRedux();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotificationMenu, setShowNotificationMenu] = useState(false);
   const [current, setCurrent] = useState("home");
@@ -60,6 +66,9 @@ const HeaderUI = ({ notFound }) => {
   //   setHover1(false);
   // });
 
+  const handleCategoriesToggle = () => {
+    dispatch(toggleCategoriesModal())
+  }
   useEffect(() => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
@@ -68,6 +77,7 @@ const HeaderUI = ({ notFound }) => {
   const fontSize = "25px";
   const color = "#d3d3d3";
   return (
+    <>
     <HeaderContainer>
       <LogoContainer>
         <LinkWrapper url="/">
@@ -160,7 +170,12 @@ const HeaderUI = ({ notFound }) => {
             <ToolTip text="Basket" />
             </HeaderMenu>
           </MenusContainer>
-          <CategoriesContanier>Categories</CategoriesContanier>
+        <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))}/>
+        
+          <CategoriesContanier>
+          <HeaderDropDownMenu />
+          </CategoriesContanier>
+     
         </>
       )}
       {/* <Link to="/">
@@ -177,7 +192,13 @@ const HeaderUI = ({ notFound }) => {
           </SearchBar>
       </SearchContainer>
       <MenusContainer>Menus</MenusContainer> */}
+    {/* <OverLay></OverLay> */}
     </HeaderContainer>
+  {categoriesModal &&
+  
+    <CategoriesModal /> 
+  }
+    </>
   );
 };
 

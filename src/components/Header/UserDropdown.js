@@ -70,10 +70,13 @@ const UserDropdown = ({ setShowUserMenu }) => {
           <BookOutlined className="icon" style={{ fontSize }} />
         </Item>
 
-        <Item label="Account settings" isLink url="/account/settings/menu">
+        <LinkWrapper url="/account/settings">
+
+        <Item label="Account settings" isLink url="/account/settings">
           <SettingFilled className="icon" style={{ fontSize }} />
         </Item>
 
+        </LinkWrapper>
         <Item label="Sell with us">
           <PlusOutlined className="icon" style={{ fontSize }} />
         </Item>

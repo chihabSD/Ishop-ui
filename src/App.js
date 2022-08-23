@@ -17,13 +17,23 @@ import { SettingsLayout, NotFoundLayout, MainLayout } from "./layouts";
 import AccountSettingsUI from "./pages/AccountSettings";
 import store from "./redux/store";
 import { PrivateRoutes, PublicRoutes } from "./routes";
+import OverLay from "./components/Modals";
+import CategoriesModal from "./components/Modals/CategoriesModal";
 const App = () => {
+
   return (
     <Provider store={store}>
        
        {/* <Route element={<PrivateRoutes />}>
 
        </Route> */}
+       {/* <OverLay>
+
+       </OverLay> */}
+       {/* {store.getState().modalReducer.categoriesModal?
+       
+       <CategoriesModal /> : null
+      } */}
       <Routes>
         {/* HOME */}
         <Route path="/" element={<MainLayout />}>

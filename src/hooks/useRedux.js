@@ -5,6 +5,7 @@ const useRedux = () => {
   const {
     profileReducer: { user, authenticated },
     loadingReducer: { loading },
+    modalReducer: { categoriesModal},
     pageReducer: {
       currentPage,
       currentSettingMenu,
@@ -25,7 +26,7 @@ const useRedux = () => {
     currentSettingMenu,
     currentSideBarMenu,
     settingsMenus,
-    sideBarMenu 
+    sideBarMenu , categoriesModal
 
   };
 };
