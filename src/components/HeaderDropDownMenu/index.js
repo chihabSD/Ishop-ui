@@ -25,20 +25,30 @@ export default HeaderDropDownMenu;
 const Container = styled.ul`
 /* margin: 10px; */
   list-style-type: none; /*to remove bullets*/
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  /* width: 100%; */
+
   display: flex;
-  justify-content: space-evenly;
-  /* width: 90%; */
+    align-items: stretch; /* Default */
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+
+    transition: all 0.5s;
   /* overflow: hidden; */
-  transition: all 0.5s;
+ 
   line-height: 18px;
-  /* background-color: red; */
   li {
+    transition: all 0.5s;
     display: inline-block;
-    padding: 10px;
+    padding: 5px ;
     padding-bottom: 20px;
     cursor: pointer;
     p {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
     }
     &:hover {

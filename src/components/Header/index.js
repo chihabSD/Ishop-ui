@@ -38,8 +38,10 @@ import {
   MenusContainer,
   SearchBar,
   SearchBarIconsContainer,
-  SearchIcon, 
+  SearchIcon,
   CategoriesContanier,
+  HeaderBottom,
+  HeaderTop,
 } from "./Style";
 import { AvatarContainer } from "./Style/HeaderMenuStyle";
 import UserDropdown from "./UserDropdown";
@@ -67,8 +69,8 @@ const HeaderUI = ({ notFound }) => {
   // });
 
   const handleCategoriesToggle = () => {
-    dispatch(toggleCategoriesModal())
-  }
+    dispatch(toggleCategoriesModal());
+  };
   useEffect(() => {
     if (modal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "visible";
@@ -78,126 +80,103 @@ const HeaderUI = ({ notFound }) => {
   const color = "#d3d3d3";
   return (
     <>
-    <HeaderContainer>
-      <LogoContainer>
-        <LinkWrapper url="/">
-          <h1>DUKAN</h1>
-        </LinkWrapper>
-      </LogoContainer>
+      <HeaderContainer>
+        <HeaderTop>
+          <LogoContainer>
+            <LinkWrapper url="/">
+              <h1>DUKAN</h1>
+            </LinkWrapper>
+          </LogoContainer>
 
-      {!notFound && (
-        <>
-          <SearchContainer>
-            <SearchBar>
-              <input
-                type="text"
-                name=""
-                placeholder="Search for everything..."
-              />
-              <SearchBarIconsContainer>
-                {/* <SearchIcon id="close">
-                  <CloseOutlined style={{ fontSize: "17px" }} />
-                </SearchIcon> */}
+          {!notFound && (
+            <>
+              <SearchContainer>
+                <SearchBar>
+                  <input
+                    type="text"
+                    name=""
+                    placeholder="Search for everything..."
+                  />
+                  <SearchBarIconsContainer>
+                    <SearchIcon>
+                      <SearchOutlined style={{ fontSize: "25px" }} />
+                    </SearchIcon>
+                  </SearchBarIconsContainer>
+                </SearchBar>
 
-                <SearchIcon>
-                  <SearchOutlined style={{ fontSize: "25px" }} />
-                </SearchIcon>
-              </SearchBarIconsContainer>
-            </SearchBar>
+                {/* <SearchResult /> */}
+              </SearchContainer>
 
-              
-          {/* SEARCH RESULT CONTAINER */}
-          {/* <SearchResult /> */}
+              <MenusContainer>
+                {authenticated && (
+                  <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
+                    <LoginLabel />
+                  </HeaderMenu>
+                )}
+                <HeaderMenu icon={<HeartFilled style={{ fontSize }} />}>
+                  <ToolTip text="Favourites" />
+                </HeaderMenu>
+                {!authenticated && (
+                  <HeaderMenu
+                    icon={<BellOutlined style={{ fontSize }} />}
+                    onClick={() => setShowNotificationMenu((prev) => !prev)}
+                    ref={notificatinRef}
+                  >
+                    <CaretDownFilled style={{ fontSize: "15px", color }} />
 
-          </SearchContainer>
+                    {showNotificationMenu && (
+                      <NotificationDropDown
+                        setShowNotificationMenu={() =>
+                          setShowNotificationMenu(false)
+                        }
+                      />
+                    )}
 
-          <MenusContainer>
-            {authenticated && (
-              <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
-                <LoginLabel />
-              </HeaderMenu>
-            )}
-            <HeaderMenu icon={<HeartFilled style={{ fontSize }} />} >
-            {/* <ToolTip /> */}
-            <ToolTip text="Favourites" />
-            </HeaderMenu>
-            {!authenticated && (
-              <HeaderMenu
-                icon={<BellOutlined style={{ fontSize }} />}
-                onClick={() => setShowNotificationMenu((prev) => !prev)}
-                ref={notificatinRef}
-              >
-                <CaretDownFilled style={{ fontSize: "15px", color }} />
-
-                {showNotificationMenu && (
-                  <NotificationDropDown
-                    setShowNotificationMenu={() =>
-                      setShowNotificationMenu(false)
+                    <ToolTip text="Notifications" />
+                  </HeaderMenu>
+                )}
+                {!authenticated && (
+                  <HeaderMenu
+                    lockPointer={showUserMenu ? true : false}
+                    icon={
+                      <ProfilePicContainer
+                        style={{ width: fontSize, height: fontSize }}
+                      />
                     }
-                  />
-                )}
+                    onClick={() => setShowUserMenu((prev) => !prev)}
+                    ref={useMenuRef}
+                  >
+                    <CaretDownFilled
+                      style={{ fontSize: "15px", color, marginLeft: "4px" }}
+                    />
+                    {showUserMenu && (
+                      <UserDropdown
+                        setShowUserMenu={() => setShowUserMenu(false)}
+                      />
+                    )}
 
-            <ToolTip text="Notifications" />
-              </HeaderMenu>
-            )}
-            {!authenticated && (
-              <HeaderMenu    
-              lockPointer={showUserMenu ? true:false}
-                icon={
-                  <ProfilePicContainer
-                    style={{ width: fontSize, height: fontSize }}
-                  />
-                }
-                onClick={() => setShowUserMenu((prev) => !prev)}
-                // onClick={() => {}}
-                ref={useMenuRef}
-              >
-                <CaretDownFilled
-                  style={{ fontSize: "15px", color, marginLeft: "4px" }}
-                />
-                {showUserMenu && (
-                  <UserDropdown
-               
-                    setShowUserMenu={() => setShowUserMenu(false)}
-                  />
+                    <ToolTip text="Your account" />
+                  </HeaderMenu>
                 )}
-                
-                <ToolTip text="Your account" />
-              </HeaderMenu>
-            )}
-            <HeaderMenu icon={<ShoppingCartOutlined style={{ fontSize }} />} >
-
-            <ToolTip text="Basket" />
-            </HeaderMenu>
-          </MenusContainer>
-        <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))}/>
-        
+                <HeaderMenu
+                  icon={<ShoppingCartOutlined style={{ fontSize }} />}
+                >
+                  <ToolTip text="Basket" />
+                </HeaderMenu>
+              </MenusContainer>
+              <MenuIcons
+                onClick={() => dispatch(toggleCategoriesModal(true))}
+              />
+            </>
+          )}
+        </HeaderTop>
+        <HeaderBottom>
           <CategoriesContanier>
-          <HeaderDropDownMenu />
+            <HeaderDropDownMenu />
           </CategoriesContanier>
-     
-        </>
-      )}
-      {/* <Link to="/">
-      <LogoContainer>
-        <h1>DUKAN</h1>
-      </LogoContainer>
-      </Link>
-      <SearchContainer>
-        <SearchBar>
-            <input placeholder="Seach for everything..." type="search" />
-            <SearchIconContainer>
-              <SearchOutlined />
-            </SearchIconContainer>
-          </SearchBar>
-      </SearchContainer>
-      <MenusContainer>Menus</MenusContainer> */}
-    {/* <OverLay></OverLay> */}
-    </HeaderContainer>
-  {categoriesModal &&
-  
-    <CategoriesModal /> 
-  }
+        </HeaderBottom>
+      </HeaderContainer>
+      {categoriesModal && <CategoriesModal />}
     </>
   );
 };

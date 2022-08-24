@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MainLayoutContainer = styled.div`
   height: 100vh;
   display: grid;
+  background-color: white;
   grid-template-areas:
     "header header header"
     "middleContents middleContents middleContents"
