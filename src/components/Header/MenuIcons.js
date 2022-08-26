@@ -9,13 +9,16 @@ const MenuIcons = ({onClick}) => {
   return (
     <Container id='menuIcons' onClick={()=>dispatch(toggleCategoriesModal())}>
     <MenuOutlined style={{ fontSize: "25px" }} />
+    <span style={{marginTop:'20px', fontWeight:'900'}}>
+      MENU
+    </span>
     </Container>
   )
 }
 
 export default MenuIcons
 const Container = styled.div`
-display: none;
+/* display: none; */
 /* background-color: blue; */
 grid-area: menuIcons;
 /* background-color: yellow; */

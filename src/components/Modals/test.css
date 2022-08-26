@@ -7,14 +7,15 @@
 }
 
 .child {
-    background-color: white;
+    background-color:white ;
     /* border: 1px solid; */
     /* margin: 10px; */
     transition: all 0.5s;
     padding: 10px;
+    padding-top: 0;
     position: absolute;
     left: 0;
-    cursor: pointer;
+    /* cursor: pointer; */
     top: 0;
     right: 0;
     height: 100vh;

@@ -1,35 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 
+import { categories } from "../../constants/categories";
 const HeaderDropDownMenu = () => {
-  const categories = [
-    { id: 0, name: "Jewellery & Accessories" },
-    { id: 0, name: "Clothing & Shoes" },
-    { id: 0, name: "Home & Living" },
-    { id: 0, name: "Wedding & Party" },
-    { id: 0, name: "Toys & Entertainment" },
-    { id: 0, name: "Art & Collectibles" },
-    { id: 0, name: "Craft Supplies & Tools" },
-    { id: 0, name: " Vinage" },
-  ];
+  // const categories = [
+  //   { id: 0, name: "Jewellery & Accessories" },
+  //   { id: 0, name: "Clothing & Shoes" },
+  //   { id: 0, name: "Home & Living" },
+  //   { id: 0, name: "Wedding & Party" },
+  //   { id: 0, name: "Toys & Entertainment" },
+  //   { id: 0, name: "Art & Collectibles" },
+  //   { id: 0, name: "Craft Supplies & Tools" },
+  //   { id: 0, name: " Vinage" },
+  // ];
   return (
     <Container>
-      {categories.map((item) => (
+      {categories.children.map((item) => (
         <li key={item.id}>
           <p>{item.name}</p>
+          {item.children && <SubMenu></SubMenu>}
         </li>
       ))}
     </Container>
   );
 };
-
 export default HeaderDropDownMenu;
 const Container = styled.ul`
-  /* margin: 10px; */
   list-style-type: none; /*to remove bullets*/
-  /* display: flex; */
-  /* justify-content: space-evenly; */
-  /* width: 100%; */
 
   z-index: -1;
   display: flex;
@@ -40,7 +37,6 @@ const Container = styled.ul`
   padding: 0;
 
   transition: all 0.5s;
-  /* overflow: hidden; */
 
   line-height: 18px;
   li {
@@ -72,9 +68,7 @@ const Container = styled.ul`
       font-weight: 400;
     }
     &:hover {
-
       &::after {
-
         opacity: 1;
       }
       /* opacity: 1; */
@@ -82,4 +76,15 @@ const Container = styled.ul`
       /* border-bottom: 1px solid blue; */
     }
   }
+`;
+
+const SubMenu = styled.li`
+  /* height: 300px; */
+  background-color: blue;
+  width: 400px;
+  top: 10;
+  left: 0;
+  right: 0;
+  height: 300px;
+  position: absolute;
 `;

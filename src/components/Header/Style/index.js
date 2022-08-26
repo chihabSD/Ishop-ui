@@ -29,12 +29,12 @@ export const HeaderTop = styled.div`
   transform: scaleX(1) scaleY(1) perspective(1px);
   visibility: visible;
   display: grid;
-  padding: 0 8.5%;
+  padding: 0 11%;
   padding-top: 10px;
   align-items: center;
   gap: 10px;
-  grid-template-areas: "logoContainer searchContainer HeaderTopContainer";
-  grid-template-columns: auto 3fr 1fr;
+  grid-template-areas: "menuIcons logoContainer searchContainer HeaderTopContainer";
+  grid-template-columns: auto auto 3fr 1fr;
   flex: 1;
 
   @media (max-width: 768px) {
@@ -97,31 +97,41 @@ export const LogoContainer = styled.div`
 `;
 // SEARCH CONTAINER
 export const SearchContainer = styled.div`
-  /* background-color: yellow; */
+  background-color: #f1f1f1;
+  opacity: 0.7;
   grid-area: searchContainer;
-  border: 2px solid #111;
+  /* border: 2px solid #111; */
   padding: 5px 10px;
   border-radius: 24px;
   position: relative;
   /* margin: 0 20px; */
-
+  cursor: pointer;
+&:hover{
+  opacity: 1;
+}
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
 export const SearchBar = styled.div`
-  /* background-color: green; */
+  background-color: inherit;
   display: flex;
   border-radius: inherit;
   align-items: center;
   flex: 1;
   justify-content: space-between;
+  input[type="text"]:focus{
+    /* outline: none; */
+    border: 1px solid #3498db;
+        /* box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); */
+}
 
   input[type="text"] {
     flex: 1;
     border: none;
     /* border-radius: inherit; */
+    background-color: inherit;
     border-radius: 24px;
     height: 100%;
     display: block;
@@ -139,6 +149,7 @@ export const SearchBarIconsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  /* background-color: ; */
 `;
 export const SearchIcon = styled.div`
   border-radius: 50%;

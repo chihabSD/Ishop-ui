@@ -86,6 +86,8 @@ const HeaderUI = ({ notFound }) => {
     <>
       <HeaderContainer>
         <HeaderTop>
+
+          <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))} />
           <LogoContainer>
             <LinkWrapper url="/">
               <h1>DUKAN</h1>
@@ -154,7 +156,7 @@ const HeaderUI = ({ notFound }) => {
                       />
                     )}
 
-                    <ToolTip text="Your account" />
+                    {!showUserMenu && <ToolTip text="Your account" />}
                   </HeaderTopIconContainerUI>
                 )}
                 <HeaderTopIconContainerUI>
@@ -168,10 +170,10 @@ const HeaderUI = ({ notFound }) => {
           )}
         </HeaderTop>
         <HeaderBottom>
-          <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))} />
-          <CategoriesContanier>
+          {/* <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))} /> */}
+          {/* <CategoriesContanier>
             <HeaderDropDownMenu />
-          </CategoriesContanier>
+          </CategoriesContanier> */}
           <SearchBarUI hide />
         </HeaderBottom>
         <span id="slider"></span>

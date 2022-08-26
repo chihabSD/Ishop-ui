@@ -12,8 +12,11 @@ const SearchBarUI = ({hide}) => {
         placeholder="Search for everything..."
       />
       <SearchBarIconsContainer>
+
         <SearchIcon>
+        <div>
           <SearchOutlined style={{ fontSize: "25px" }} />
+        </div>
         </SearchIcon>
       </SearchBarIconsContainer>
     </SearchBar>

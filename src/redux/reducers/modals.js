@@ -9,9 +9,12 @@ export const modalSlicer = createSlice({
        toggleCategoriesModal: (state, action) => {
       state.categoriesModal = !state.categoriesModal;
     },
+    closeModal: (state, action) => {
+      state.categoriesModal = false;
+    },
   },
 });
-export const { toggleCategoriesModal } = modalSlicer.actions;
+export const { toggleCategoriesModal , closeModal } = modalSlicer.actions;
 export default modalSlicer.reducer;
 
 
