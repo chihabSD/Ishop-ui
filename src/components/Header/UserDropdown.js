@@ -37,11 +37,13 @@ const UserDropdown = ({ setShowUserMenu }) => {
   return (
     <UserDropdownContainer ref={menu}>
       <ListContainer>
-        <LinkWrapper url='/account/settings'>
+        <LinkWrapper url="/account/settings">
           <Item
+            profile
             style={{
               borderBottom: "0.5px solid #f1f1f1",
               marginBottom: "15px",
+              backgroundColor: "green",
             }}
           >
             <ProfilePicContainer />
@@ -71,34 +73,42 @@ const UserDropdown = ({ setShowUserMenu }) => {
         </Item>
 
         <LinkWrapper url="/account/settings">
-
-        <Item label="Account settings" isLink url="/account/settings">
-          <SettingFilled className="icon" style={{ fontSize }} />
-        </Item>
-
+          <Item label="Account settings" isLink url="/account/settings">
+            <SettingFilled className="icon" style={{ fontSize }} />
+          </Item>
         </LinkWrapper>
         <Item label="Sell with us">
           <PlusOutlined className="icon" style={{ fontSize }} />
         </Item>
       </ListContainer>
-      {/* <Link to="/account/settings/menu">
-    </Link> */}
     </UserDropdownContainer>
   );
 };
 
 export default UserDropdown;
 
-const Item = ({ children, isLink, label, style }) => {
+const Item = ({ children, isLink, label, style, profile }) => {
+  if (profile) {
+    return (
+      <li
+        style={{
+          display: "flex",
+          alignItems: "center",
+          borderBottom: "0.5px solid #f1f1f1",
+          marginBottom: "15px",
+        }}
+      >
+        {children}
+      </li>
+    );
+  }
   return (
-    <li style={{ ...style }}>
-      {children} {label && <p>{label}</p>}
+    <li>
+      <div>{children}</div>
+      {label && <p>{label}</p>}
     </li>
   );
 };
-
-
-
 const ListContainer = styled.ul`
   list-style: none;
   position: relative;
@@ -154,6 +164,7 @@ const ListContainer = styled.ul`
 `;
 
 const ViewProfile = styled.div`
+  /* background-color: white; */
   text-align: center;
   width: 100%;
   position: relative;
@@ -163,6 +174,8 @@ const ViewProfile = styled.div`
   span {
     font-weight: 900;
     font-size: 15px;
+    background-color: inherit;
     margin-bottom: 3px;
+
   }
 `;

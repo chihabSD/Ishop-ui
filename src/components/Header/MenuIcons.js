@@ -15,7 +15,8 @@ const MenuIcons = ({onClick}) => {
 
 export default MenuIcons
 const Container = styled.div`
-visibility: hidden;
+display: none;
+/* background-color: blue; */
 grid-area: menuIcons;
 /* background-color: yellow; */
 cursor: pointer;
@@ -24,7 +25,7 @@ height: 40px;
 border-radius: 50%;
 align-items: center;
 justify-content: center;
-display: flex;
+/* display: flex; */
 padding: 5px;
 transition: all 0.5s;
 &:hover {

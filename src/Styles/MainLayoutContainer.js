@@ -8,7 +8,6 @@ export const MainLayoutContainer = styled.div`
     "header header header"
     "middleContents middleContents middleContents"
     "footer footer footer";
-
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: auto 1fr 100px;
 `;

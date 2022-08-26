@@ -26,10 +26,12 @@ import OverLay from "../Modals";
 import CategoriesModal from "../Modals/CategoriesModal";
 import ProfilePicContainer from "../ProfilePicContainer";
 import ToolTip from "../ToolTip";
-import HeaderMenu from "./HeaderMenu";
+import HeaderTopIconContainerUI from "./ HeaderTopIconContainerUI";
+// import HeaderMenu from "./HeaderMenu";
 import LoginLabel from "./LoginLabel";
 import MenuIcons from "./MenuIcons";
 import NotificationDropDown from "./NotificationDropDown";
+import SearchBarUI from "./SearchBarUI";
 import SearchResult from "./SearchResult";
 import {
   HeaderContainer,
@@ -42,6 +44,8 @@ import {
   CategoriesContanier,
   HeaderBottom,
   HeaderTop,
+  Hamburger,
+  HeaderTopIconContainer,
 } from "./Style";
 import { AvatarContainer } from "./Style/HeaderMenuStyle";
 import UserDropdown from "./UserDropdown";
@@ -90,33 +94,114 @@ const HeaderUI = ({ notFound }) => {
 
           {!notFound && (
             <>
-              <SearchContainer>
-                <SearchBar>
-                  <input
-                    type="text"
-                    name=""
-                    placeholder="Search for everything..."
-                  />
-                  <SearchBarIconsContainer>
-                    <SearchIcon>
-                      <SearchOutlined style={{ fontSize: "25px" }} />
-                    </SearchIcon>
-                  </SearchBarIconsContainer>
-                </SearchBar>
-
-                {/* <SearchResult /> */}
-              </SearchContainer>
+              <SearchBarUI />
 
               <MenusContainer>
-                {authenticated && (
+                {/* <HeaderTopIconContainer>
+
+                </HeaderTopIconContainer> */}
+                {/* {authenticated && (
                   <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
                     <LoginLabel />
                   </HeaderMenu>
-                )}
-                <HeaderMenu icon={<HeartFilled style={{ fontSize }} />}>
+                )} */}
+                <HeaderTopIconContainerUI>
+                  <div>
+                    <HeartFilled style={{ fontSize }} />
+                  </div>
                   <ToolTip text="Favourites" />
-                </HeaderMenu>
+                </HeaderTopIconContainerUI>
                 {!authenticated && (
+                  <HeaderTopIconContainerUI
+                    onClick={() => setShowNotificationMenu((prev) => !prev)}
+                    ref={notificatinRef}
+                  >
+                    <div>
+                      <BellOutlined style={{ fontSize }} />
+                    </div>
+                    <div>
+                      <CaretDownFilled style={{ fontSize: "15px", color }} />
+                    </div>
+
+                    {showNotificationMenu && (
+                      <NotificationDropDown
+                        setShowNotificationMenu={() =>
+                          setShowNotificationMenu(false)
+                        }
+                      />
+                    )}
+
+                    <ToolTip text="Notifications" />
+                  </HeaderTopIconContainerUI>
+                )}
+                {!authenticated && (
+                  <HeaderTopIconContainerUI
+                    lockPointer={showUserMenu ? true : false}
+                    onClick={() => setShowUserMenu((prev) => !prev)}
+                    ref={useMenuRef}
+                  >
+                    <div>
+                      <ProfilePicContainer
+                        style={{ width: fontSize, height: fontSize }}
+                      />
+                    </div>
+                    <CaretDownFilled
+                      style={{ fontSize: "15px", color, marginLeft: "4px" }}
+                    />
+                    {showUserMenu && (
+                      <UserDropdown
+                        setShowUserMenu={() => setShowUserMenu(false)}
+                      />
+                    )}
+
+                    <ToolTip text="Your account" />
+                  </HeaderTopIconContainerUI>
+                )}
+                <HeaderTopIconContainerUI>
+                  <div>
+                    <ShoppingCartOutlined style={{ fontSize }} />
+                  </div>
+                  <ToolTip text="Basket" />
+                </HeaderTopIconContainerUI>
+              </MenusContainer>
+            </>
+          )}
+        </HeaderTop>
+        <HeaderBottom>
+          <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))} />
+          <CategoriesContanier>
+            <HeaderDropDownMenu />
+          </CategoriesContanier>
+          <SearchBarUI hide />
+        </HeaderBottom>
+        <span id="slider"></span>
+      </HeaderContainer>
+      {categoriesModal && <CategoriesModal />}
+    </>
+  );
+};
+
+export default HeaderUI;
+
+{
+  /* <HeaderTopIconContainer>
+
+                </HeaderTopIconContainer> */
+}
+{
+  /* {authenticated && (
+                  <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
+                    <LoginLabel />
+                  </HeaderMenu>
+                )} */
+}
+{
+  /* <HeaderMenu icon={<HeartFilled style={{ fontSize }} />}>
+                  <ToolTip text="Favourites" />
+                </HeaderMenu> */
+}
+{
+  /* {!authenticated && (
                   <HeaderMenu
                     icon={<BellOutlined style={{ fontSize }} />}
                     onClick={() => setShowNotificationMenu((prev) => !prev)}
@@ -134,8 +219,10 @@ const HeaderUI = ({ notFound }) => {
 
                     <ToolTip text="Notifications" />
                   </HeaderMenu>
-                )}
-                {!authenticated && (
+                )} */
+}
+{
+  /* {!authenticated && (
                   <HeaderMenu
                     lockPointer={showUserMenu ? true : false}
                     icon={
@@ -157,28 +244,12 @@ const HeaderUI = ({ notFound }) => {
 
                     <ToolTip text="Your account" />
                   </HeaderMenu>
-                )}
-                <HeaderMenu
+                )} */
+}
+{
+  /* <HeaderMenu
                   icon={<ShoppingCartOutlined style={{ fontSize }} />}
                 >
                   <ToolTip text="Basket" />
-                </HeaderMenu>
-              </MenusContainer>
-              <MenuIcons
-                onClick={() => dispatch(toggleCategoriesModal(true))}
-              />
-            </>
-          )}
-        </HeaderTop>
-        <HeaderBottom>
-          <CategoriesContanier>
-            <HeaderDropDownMenu />
-          </CategoriesContanier>
-        </HeaderBottom>
-      </HeaderContainer>
-      {categoriesModal && <CategoriesModal />}
-    </>
-  );
-};
-
-export default HeaderUI;
+                </HeaderMenu> */
+}

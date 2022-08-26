@@ -4,21 +4,27 @@ export const HeaderContainer = styled.div`
   grid-area: header;
   position: sticky;
   top: 0;
-  height: 200px;
+  /* height: 200px; */
   display: flex;
   flex-direction: column;
   width: 100%;
-  z-index: 1;
+  /* z-index: 1; */
+  span {
+    display: inline-block;
+    height: 5px;
+    background-color: #f1f1f1;
+    width: 100%;
+  }
   /* width: 73%;
   height: 100px;
   margin: 10px auto;
   align-items: center;
  
     
+  span
   } */
 `;
 export const HeaderTop = styled.div`
-  background-color: inherit;
   height: 100px;
   transform: scaleX(1) scaleY(1) perspective(1px);
   visibility: visible;
@@ -27,14 +33,54 @@ export const HeaderTop = styled.div`
   padding-top: 10px;
   align-items: center;
   gap: 10px;
-  grid-template-areas: "logoContainer searchContainer menusContainer";
-  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "logoContainer searchContainer HeaderTopContainer";
+  grid-template-columns: auto 3fr 1fr;
   flex: 1;
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto 1fr;
+   
+  }
 `;
 export const HeaderBottom = styled.div`
-  background-color: white;
+  padding-bottom: 20px;
+  /* border-bottom: 1px solid; */
   flex: 1;
   transition: all 0.5s;
+
+
+  z-index: -1;
+  display: grid;
+  /* gap: 10px; */
+  grid-template-areas: "menuIcons categories categories categories";
+  /* grid-template-columns: none 1fr; */
+
+  & #searchVisbile {
+    display: none;
+    }
+    & #menuIcons {
+        /* visibility: hidden */
+        /* display:none */
+        background-color: blue;
+    }
+  @media (max-width: 768px) {
+    /* background-color: blue; */
+
+    grid-template-areas: "menuIcons searchContainer";
+    grid-template-columns: auto 1fr;
+    /* gap: 10; */
+    /* searchContainer */
+    /* padding: 0 10%; */
+    & #searchVisbile {
+      /* display: block; */
+      /* height: 100px; */
+      background-color: blue;
+    }
+
+    & #menuIcons {
+      visibility: visible;
+    }
+  }
 `;
 
 // LOGO CONTAINER
@@ -60,10 +106,7 @@ export const SearchContainer = styled.div`
   /* margin: 0 20px; */
 
   @media (max-width: 768px) {
-    /* width: 0vw; */
-    width: 90%;
-    /* grid-template-rows: 200px auto ; */
-    /* grid-template-columns: 100px 1fr ; */
+    display: none;
   }
 `;
 
@@ -112,26 +155,44 @@ export const SearchIcon = styled.div`
 
 // MENUS CONTIANER
 export const MenusContainer = styled.div`
-  grid-area: menusContainer;
+  grid-area: HeaderTopContainer;
   background-color: white;
+  border: 1px white;
 
   /* width: 40vw; */
   display: flex;
+
   align-items: center;
   padding: 20px 10px;
   height: 70px;
   justify-content: center;
 
-  @media (max-width: 768px) {
-    /* width: 0vw; */
-    /* width: 95%; */
-    /* grid-template-rows: 200px auto ; */
-    /* grid-template-columns: 100px 1fr ; */
-  }
+ 
 `;
+export const HeaderTopIconContainer = styled.div`
+/* background-color: blue; */
+/* margin: 10px; */
+/* margin: 10px;
+width: 10px;
+border-radius: 24px;
+display: flex;
+border: 1px solid;
+align-items: center;
+justify-content: center; */
+
+`
+// export const HeaderMenuContainer = styled.div`
+// background-color: blue;
+// margin: 10px;
+// display: flex;
+// border: 1px solid;
+
+// `
+
 
 export const MenuItem = styled.div`
   margin-left: 10px;
+  /* background-color: blue; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -156,27 +217,19 @@ export const MenuItem = styled.div`
 
 // Categories
 export const CategoriesContanier = styled.div`
-  /* grid-area: categories; */
-  border-bottom: 1px solid #d3d3d3;
+  grid-area: categories;
+  /* border-bottom: 1px solid #d3d3d3; */
   /* width: 100%; */
   /* background-color: yellow; */
   width: 100vw;
   transition: all 0.5s;
-  /* margin-top: 7px; */
   padding: 0 10%;
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-// export const MainLayoutContainer = styled.div`
-//   height: 100vh;
-//   display: grid;
-//   grid-template-areas:
-//     "header header header"
-//     "middleContents middleContents middleContents"
-//     "footer footer footer";
-
-//   grid-template-columns: 1fr 4fr 1fr;
-//   grid-template-rows: auto 1fr 100px;
+// export const Hamburger = styled.div`
+// grid-area: menuIcons;
+// /* background-color: blue; */
 // `;

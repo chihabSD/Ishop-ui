@@ -1,9 +1,26 @@
 import styled from "styled-components";
 
+// export const HeaderMenuContainer = styled.div`
+
+// position: relative;
+// display: flex;
+// align-items: center;
+// justify-content: space-between;
+// `;
+
+
+
+
+
+// import styled from "styled-components";
+
 export const HeaderMenuContainer = styled.div`
 /* border: 1px solid blue; */
+background-color: gray;
+grid-area: menusContainer;
 margin: 5px;
 position: relative;
+
 padding: 10px;
 /* overflow: auto; */
 border-radius: 24px;
@@ -35,14 +52,3 @@ cursor: pointer;
 `;
 
 
-// visibility: hidden;
-// width: 120px;
-// background-color: black;
-// color: #fff;
-// text-align: center;
-// border-radius: 6px;
-// padding: 5px 0;
-
-// /* Position the tooltip */
-// position: absolute;
-// z-index: 1;
