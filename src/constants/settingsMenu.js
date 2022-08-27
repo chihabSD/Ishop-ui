@@ -1,6 +1,6 @@
 
 export const settingsMenus = [
-    { id: 0, name: "Account", route:'/account/settings/menu' },
+    { id: 0, name: "Account", route:'/account/settings' },
     { id: 1, name: "Preferences", route:'/account/preferences' },
     { id: 2, name: "Privacy", route:'/account/privacy' },
     { id: 3, name: "Security", route:'/account/security' },

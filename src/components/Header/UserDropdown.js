@@ -2,6 +2,8 @@ import {
   BookOutlined,
   CaretDownFilled,
   GiftOutlined,
+  LoginOutlined,
+  LogoutOutlined,
   MessageOutlined,
   PlusOutlined,
   SettingFilled,
@@ -19,6 +21,7 @@ import ProfilePicContainer from "../ProfilePicContainer";
 import { useClickOutSide } from "../../hooks/useClickOutside";
 import LinkWrapper from "../LinkWrapper";
 import { UserDropdownContainer } from "../../Styles/UserDropdownContainer";
+import { Divider } from "../divider";
 const UserDropdown = ({ setShowUserMenu }) => {
   const { dispatch, user } = useRedux();
   const menu = useRef(null);
@@ -33,6 +36,7 @@ const UserDropdown = ({ setShowUserMenu }) => {
     dispatch(_logout());
   };
   const fontSize = "25px";
+
 
   return (
     <UserDropdownContainer ref={menu}>
@@ -80,6 +84,13 @@ const UserDropdown = ({ setShowUserMenu }) => {
         <Item label="Sell with us">
           <PlusOutlined className="icon" style={{ fontSize }} />
         </Item>
+
+        
+        <Divider />
+        <Item label="Logout " >
+          <LoginOutlined className="icon" style={{ fontSize }} />
+        </Item>
+
       </ListContainer>
     </UserDropdownContainer>
   );
@@ -87,7 +98,7 @@ const UserDropdown = ({ setShowUserMenu }) => {
 
 export default UserDropdown;
 
-const Item = ({ children, isLink, label, style, profile }) => {
+const Item = ({ children, isLink, label, style, profile , onClick}) => {
   if (profile) {
     return (
       <li
@@ -103,7 +114,7 @@ const Item = ({ children, isLink, label, style, profile }) => {
     );
   }
   return (
-    <li>
+    <li >
       <div>{children}</div>
       {label && <p>{label}</p>}
     </li>

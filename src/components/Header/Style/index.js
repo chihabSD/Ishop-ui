@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   grid-area: header;
+  background-color: white;
   position: sticky;
   top: 0;
   /* height: 200px; */
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* z-index: 1; */
+  z-index: 999;
   span {
     display: inline-block;
     height: 5px;

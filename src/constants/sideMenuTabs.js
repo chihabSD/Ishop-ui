@@ -27,7 +27,7 @@ export const menusTabs = [
     id: 33,
     name: "Settings",
     children: [],
-    route:'/account/settings/menu', 
+    route:'/account/settings', 
     icon: <SettingFilled className="icon" style={{ fontSize: "20px" }} />,
   },
   

@@ -5,7 +5,7 @@ import SideBarUI from "../../components/Sidebar";
 import { SettingsLayoutContainer } from "../../Styles/SettingsLayoutContainer";
 import { SettingsUIContainer } from "./Style";
 
-const AccountSettingsUI = () => {
+const PrivacyUI = () => {
   return (
     <SettingsUIContainer>
       <SettingsLayoutContainer>
@@ -21,4 +21,4 @@ const AccountSettingsUI = () => {
   );
 };
 
-export default AccountSettingsUI;
+export default PrivacyUI;
