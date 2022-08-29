@@ -15,7 +15,7 @@ import {
   AccountSettingsContainer,
   RightContainer,
 } from "../../styles/Containers";
-import Details from "./Details";
+// import Details from "./Details";
 import ImageUpload from "./ImageUpload";
 import { ProfileHeader, Left, Contents } from "./style/Style";
 
@@ -33,17 +33,19 @@ const AccountSettings = () => {
             </Left>
             <Link to={`/account/profile/dlsjfsdlfjs`}>
             
-            <FormButton label="View profile" textColor="#111" />
+            {/* <FormButton label="View profile" textColor="#111" /> */}
             </Link>
           </ProfileHeader>
           <Contents>
             <ImageUpload />
-            <Details />
+            {/* <Details /> */}
+            
           </Contents>
         </RightContainer>
       </AccountSettingsContainer>
     </>
   );
+  
 };
 
 export default AccountSettings;
