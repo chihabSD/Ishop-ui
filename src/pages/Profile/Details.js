@@ -38,7 +38,6 @@ const Details = () => {
   };
   return (
     <Container>
-      ss
       {/* <AuthContainer> */}
         <FormInputs
           type="text"
