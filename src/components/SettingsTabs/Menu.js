@@ -24,6 +24,8 @@ const Item = styled.ul`
   padding: 0;
   justify-content: center;
 
+    font-weight: 400;
+    font-size: 15px;
   cursor: pointer;
   /* border-bottom: 1px solid #f1f1f1; */
   /* padding-bottom: 10px; */
@@ -31,18 +33,20 @@ const Item = styled.ul`
     text-align: center;
     border: 1px solid #f1f1f1;
     padding: 15px;
+
     /* border-top: 5px solid ${COLORS.darkgray}; */
     border-top: ${({ currentSettingTab, item }) =>
-      currentSettingTab === item.id ? `5px solid green` : ``};
+      currentSettingTab === item.id ? `5px solid #d3d3d3` : ``};
     border-bottom: ${({ currentSettingTab, item }) =>
       currentSettingTab !== item.id ? `` : `none`};
     transition: all 0.5s ;
     &:hover {
       /* background-color: blue; */
       /* color: white; */
+      opacity: 0.5;
       border-bottom: none;
       border-top: ${({ currentSettingTab, item }) =>
-        currentSettingTab === item.id ? `5px solid green` : ``};
+        currentSettingTab === item.id ? `5px solid #d3d3d3` : ``};
     }
     /* background-color: blue; */
   }

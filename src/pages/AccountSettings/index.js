@@ -4,7 +4,6 @@ import SettingsContentsUI from "../../components/SettingsContents";
 import SettingsTabs from "../../components/SettingsTabs";
 import SideBarUI from "../../components/Sidebar";
 import { SettingsLayoutContainer } from "../../Styles/SettingsLayoutContainer";
-import SectionFourUI from "./SectionFourUI";
 import SectionOneUI from "./SectionOneUI";
 import SectionThreeUI from "./SectionThreeUI";
 import SectionTwoUI from "./SectionTwoUI";
@@ -34,7 +33,6 @@ const AccountSettingsUI = () => {
           <SectionOneUI />
           <SectionTwoUI />
           <SectionThreeUI />
-          {/* <SectionFourUI /> */}
           </Contents>
         </SettingsContentsUI>
       </SettingsLayoutContainer>
