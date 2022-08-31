@@ -26,7 +26,9 @@ const ListingsPrivacy = () => {
   };
   return (
     <SectionsWraper>
-      <SecionBodyContainer style={{ height: "90px", paddingBottom: "20px" }}>
+          <SecionBodyContainer style={{ paddingBottom: "20px" }} height="100px">
+
+      {/* <SecionBodyContainer style={{ height: "90px", paddingBottom: "20px" }}> */}
         <SectionHeader title="Your recently view Listings" />
         <p
           style={{ marginTop: "20px", marginBottom: "20px", fontSize: "15px" }}

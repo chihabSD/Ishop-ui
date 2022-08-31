@@ -1,8 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import SettingsContentsUI from "../../components/SettingsContents";
 import SettingsTabs from "../../components/SettingsTabs";
 import SideBarUI from "../../components/Sidebar";
 import { SettingsLayoutContainer } from "../../Styles/SettingsLayoutContainer";
+import Authentications from "./Authentications";
+import DeviceHistory from "./DeviceHisory";
+import SignHistory from "./SignHistory";
 import { SettingsUIContainer } from "./Style";
 
 const SecurityUI = () => {
@@ -12,9 +16,12 @@ const SecurityUI = () => {
         <SideBarUI />
         <SettingsContentsUI column>
           <SettingsTabs />
-          <div>Secruity</div>
 
-          {/* <SettingsContents>Account settings default  </SettingsContents> */}
+          <Contents>
+          <Authentications />
+          <SignHistory />
+          <DeviceHistory />
+          </Contents>
         </SettingsContentsUI>
       </SettingsLayoutContainer>
     </SettingsUIContainer>
@@ -22,3 +29,9 @@ const SecurityUI = () => {
 };
 
 export default SecurityUI;
+
+const Contents = styled.div`
+  /* background-color: blue; */
+  overflow-y: scroll;
+  height: 100vh;
+`;
