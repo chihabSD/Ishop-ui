@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components';
 import { COLORS } from '../../constants/theme';
 
-const SectionHeader = ({ title }) => {
+const SectionHeader = ({ title, style }) => {
     return (
-    <HeadeContainer>{title}</HeadeContainer>
+    <HeadeContainer style={{...style}}>{title}</HeadeContainer>
     )
 }
 
