@@ -1,8 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import SettingsContentsUI from "../../components/SettingsContents";
 import SettingsTabs from "../../components/SettingsTabs";
 import SideBarUI from "../../components/Sidebar";
 import { SettingsLayoutContainer } from "../../Styles/SettingsLayoutContainer";
+import Address from "./Address";
 import { SettingsUIContainer } from "./Style";
 
 const AddressesUI = () => {
@@ -12,9 +14,10 @@ const AddressesUI = () => {
         <SideBarUI />
         <SettingsContentsUI column>
           <SettingsTabs />
-          <div>Address</div>
 
-          {/* <SettingsContents>Account settings default  </SettingsContents> */}
+          <Contents>
+          <Address />
+          </Contents>
         </SettingsContentsUI>
       </SettingsLayoutContainer>
     </SettingsUIContainer>
@@ -22,3 +25,10 @@ const AddressesUI = () => {
 };
 
 export default AddressesUI;
+const Contents = styled.div`
+  /* background-color: blue; */
+  overflow-y: scroll;
+  height: 100vh;
+`;
+
+
