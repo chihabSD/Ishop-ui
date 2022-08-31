@@ -73,7 +73,7 @@ const Address = () => {
           <div
             style={{
               marginTop: "20px",
-              width: "180px",
+              width: "230px",
               lineHeight: "18px",
               display: "flex",
               justifyContent: "space-between",
@@ -95,10 +95,10 @@ const Address = () => {
 };
 const ActionButtons = ({ children, style, title }) => {
   return (
-    <div style={{ display: "flex"  }}>
+    <BTN>
       {children}
-      <p style={{fontSize:'15px', marginLeft:'5px'}}>{title}</p>
-    </div>
+      <p style={{ fontSize: "15px", marginLeft: "5px" }}>{title}</p>
+    </BTN>
   );
 };
 
@@ -114,13 +114,18 @@ const Top = styled.div`
     font-weight: 300;
   }
 `;
-const Bottom = styled.div``;
+const Bottom = styled.div`
+`;
 
-const SwitchContainer = styled.div`
-  margin-left: 20px;
-  width: 200px;
-  cursor: pointer;
+const BTN = styled.div`
   display: flex;
+  border-radius: 24px;
   align-items: center;
-  height: 50px;
+  justify-content: center;
+  padding: 5px 0px;
+  cursor: pointer;
+  width: 100px;
+  &:hover {
+    background-color: #d1d1d1;
+  }
 `;
