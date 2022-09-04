@@ -30,7 +30,7 @@ export const HeaderTop = styled.div`
   transform: scaleX(1) scaleY(1) perspective(1px);
   visibility: visible;
   display: grid;
-  padding: 0 11%;
+  padding: 0 9%;
   padding-top: 10px;
   align-items: center;
   gap: 10px;

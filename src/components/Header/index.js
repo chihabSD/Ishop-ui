@@ -23,6 +23,7 @@ import { toggleCategoriesModal } from "../../redux/reducers/modals";
 import HeaderDropDownMenu from "../HeaderDropDownMenu";
 import LinkWrapper from "../LinkWrapper";
 import OverLay from "../Modals";
+import AuthModalUI from "../Modals/AuthModal";
 import CategoriesModal from "../Modals/CategoriesModal";
 import ProfilePicContainer from "../ProfilePicContainer";
 import ToolTip from "../ToolTip";
@@ -57,11 +58,12 @@ const HeaderUI = ({ notFound }) => {
   const { user, dispatch, authenticated, categoriesModal } = useRedux();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotificationMenu, setShowNotificationMenu] = useState(false);
+  const [authModal, setAuthModal] = useState(false);
   const [current, setCurrent] = useState("home");
   const [modal, setModal] = useState(false);
 
-  const toggleModal = (e) => {
-    setModal((prev) => !prev);
+  const toggleAuthModal = (e) => {
+    setAuthModal((prev) => !prev);
   };
   const handleClick = (e) => {
     // console.log(e.key);
@@ -80,13 +82,12 @@ const HeaderUI = ({ notFound }) => {
     else document.body.style.overflow = "visible";
   }, [modal]);
 
-  const fontSize = "25px";
+  const fontSize = "20px";
   const color = "#d3d3d3";
   return (
     <>
       <HeaderContainer>
         <HeaderTop>
-
           <MenuIcons onClick={() => dispatch(toggleCategoriesModal(true))} />
           <LogoContainer>
             <LinkWrapper url="/">
@@ -99,21 +100,24 @@ const HeaderUI = ({ notFound }) => {
               <SearchBarUI />
 
               <MenusContainer>
-                {/* <HeaderTopIconContainer>
-
-                </HeaderTopIconContainer> */}
-                {/* {authenticated && (
-                  <HeaderMenu icon={<UserOutlined style={{ fontSize }} />}>
-                    <LoginLabel />
-                  </HeaderMenu>
-                )} */}
+               
+                {!authenticated && (
+                  
+                  <HeaderTopIconContainerUI onClick={()=>toggleAuthModal()}>
+                 
+                    <p style={{ marginLeft: "1px", fontWeight: "600", fontSize:"14px" }}>
+                      Hi!  Log in or sign up
+                    </p>
+               
+                  </HeaderTopIconContainerUI>
+                )}
                 <HeaderTopIconContainerUI>
                   <div>
                     <HeartFilled style={{ fontSize }} />
                   </div>
                   <ToolTip text="Favourites" />
                 </HeaderTopIconContainerUI>
-                {!authenticated && (
+                {authenticated && (
                   <HeaderTopIconContainerUI
                     onClick={() => setShowNotificationMenu((prev) => !prev)}
                     ref={notificatinRef}
@@ -136,7 +140,7 @@ const HeaderUI = ({ notFound }) => {
                     <ToolTip text="Notifications" />
                   </HeaderTopIconContainerUI>
                 )}
-                {!authenticated && (
+                {authenticated && (
                   <HeaderTopIconContainerUI
                     lockPointer={showUserMenu ? true : false}
                     onClick={() => setShowUserMenu((prev) => !prev)}
@@ -179,6 +183,7 @@ const HeaderUI = ({ notFound }) => {
         <span id="slider"></span>
       </HeaderContainer>
       {categoriesModal && <CategoriesModal />}
+      {authModal && <AuthModalUI toggleAuthModal={()=>toggleAuthModal()} />}
     </>
   );
 };

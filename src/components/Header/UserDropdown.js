@@ -41,7 +41,7 @@ const UserDropdown = ({ setShowUserMenu }) => {
   return (
     <UserDropdownContainer ref={menu}>
       <ListContainer>
-        <LinkWrapper url="/account/settings">
+        <LinkWrapper url="/account/profile">
           <Item
             profile
             style={{
