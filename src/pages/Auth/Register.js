@@ -6,25 +6,18 @@ import FormInputs from "../../components/Form/FormInput";
 import IconButton from "../../components/Buttons/IconButton";
 import { GoogleOutlined } from "@ant-design/icons";
 import FormActionButton from "../../components/Form/FormActionButton";
-import { LoginSchema } from "../../validation/auth";
-import {
-  AuthBodyContainer,
-  AuthPageContainer,
-  AuthTitle,
-  AuthWrapper,
-  BottomLink,
-  ForgotPasswordLink,
-  OR,
-} from "../../components/Auth";
+import AuthTitle from "../../components/Auth/AuthTitle";
+import { RegisterSchema } from "../../validation/auth";
+import { AuthBodyContainer, AuthPageContainer, AuthWrapper, BottomLink, OR } from "../../components/Auth";
 
-const Login = () => {
+const Register = () => {
   const {
     register,
     formState: { errors, isValid, isDirty, isSubmitting },
     handleSubmit,
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(LoginSchema),
+    resolver: yupResolver(RegisterSchema),
   });
 
   const onSubmit = async ({ city, birthdate, description }) => {
@@ -39,7 +32,7 @@ const Login = () => {
     <AuthPageContainer>
       <AuthWrapper>
         <AuthBodyContainer>
-          <AuthTitle title="Login to your account" />
+          <AuthTitle title="Create an account!" />
           {loginInputs.map((input) => (
             <FormInputs
               type={input.type}
@@ -59,8 +52,6 @@ const Login = () => {
             error={!isDirty || (isDirty && !isValid)}
           />
 
-          <ForgotPasswordLink />
-
           <OR />
           <div style={{ marginTop: "30px" }}>
             <IconButton
@@ -72,14 +63,13 @@ const Login = () => {
       </AuthWrapper>
 
       <BottomLink
-        to="/register"
-        title="You dont have an account ? "
-        linkLable="Create an account"
+        to="/login"
+        title="Already got an account ? "
+        linkLable="Sign in"
       />
     </AuthPageContainer>
   );
 };
 
-export default Login;
-
+export default Register;
 

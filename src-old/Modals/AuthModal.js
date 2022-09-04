@@ -11,7 +11,7 @@ import {
   AuthModalFormLinksLeft,
   AuthModalFormMiddle,
 
-  OR,
+  OR
 } from "./styles/AuthModal";
 import {
   CloseOutlined,

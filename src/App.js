@@ -30,6 +30,9 @@ import AddressesUI from "./pages/Addresses";
 import PreferencesUI from "./pages/Preferences";
 import EmailsUI from "./pages/Emails";
 import CardsUI from "./pages/Cards";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 const App = () => {
   return (
     <Provider store={store}>
@@ -47,6 +50,9 @@ const App = () => {
         {/* HOME */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomeUI />} />
+          <Route exact path="login" element={<Login />} />
+          <Route exact path="register" element={<Register />} />
+          <Route exact path="forgotpassword" element={<ForgotPassword />} />
         </Route>
 
         {/* Settings */}
