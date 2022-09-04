@@ -33,6 +33,7 @@ import CardsUI from "./pages/Cards";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import RegisterComplete from "./pages/Auth/CompleteRegistration";
 const App = () => {
   return (
     <Provider store={store}>
@@ -53,6 +54,11 @@ const App = () => {
           <Route exact path="login" element={<Login />} />
           <Route exact path="register" element={<Register />} />
           <Route exact path="forgotpassword" element={<ForgotPassword />} />
+          <Route
+              exact
+              path="/register/complete"
+              element={<RegisterComplete />}
+            />
         </Route>
 
         {/* Settings */}

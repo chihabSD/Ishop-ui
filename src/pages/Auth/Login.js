@@ -68,14 +68,16 @@ const Login = () => {
               title={"Continue with Google"}
             />
           </div>
-        </AuthBodyContainer>
-      </AuthWrapper>
-
-      <BottomLink
+        
+          <BottomLink
         to="/register"
         title="You dont have an account ? "
         linkLable="Create an account"
       />
+        </AuthBodyContainer>
+      </AuthWrapper>
+
+     
     </AuthPageContainer>
   );
 };

@@ -59,14 +59,15 @@ const Register = () => {
               title={"Continue with Google"}
             />
           </div>
-        </AuthBodyContainer>
-      </AuthWrapper>
 
       <BottomLink
         to="/login"
         title="Already got an account ? "
         linkLable="Sign in"
       />
+        </AuthBodyContainer>
+      </AuthWrapper>
+
     </AuthPageContainer>
   );
 };
